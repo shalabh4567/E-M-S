@@ -1,8 +1,20 @@
+const uname = localStorage.getItem("uname");
+const flag = localStorage.getItem("flag");
+
+console.log(uname, flag);
+
+if (!(uname && flag)) {
+  window.location.href = "../signin/signin.html";
+}
+
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-console.log(arr);
-
 const tableBody = document.querySelector(".table-body");
+const overlay = document.querySelector(".overlay");
+
+const addEmpForm = document.querySelector(".add-employee");
+
+const closeForm = document.querySelector(".cross-add-emp");
 
 for (i in arr) {
   let tr = document.createElement("tr");
@@ -33,3 +45,18 @@ for (i in arr) {
 
   tableBody.appendChild(tr);
 }
+
+const add = () => {
+  overlay.classList.remove("hidden");
+  addEmpForm.classList.remove("hidden");
+};
+
+overlay.addEventListener("click", () => {
+  overlay.classList.add("hidden");
+  addEmpForm.classList.add("hidden");
+});
+
+closeForm.addEventListener("click", () => {
+  overlay.classList.add("hidden");
+  addEmpForm.classList.add("hidden");
+});
