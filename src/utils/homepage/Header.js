@@ -1,7 +1,7 @@
 import React from "react";
 import "./Homepage.css";
-import img1 from "../images/index.png";
-import img11 from "../images/scroll-up.png";
+import scrollUp from "../../LandinPageImages/scroll-up.png";
+import index from "../../LandinPageImages/index.png";
 function Top() {
   setInterval(() => {
     var date = new Date();
@@ -75,14 +75,14 @@ function Top() {
     <div id="top">
       <a id="ok" href="#top" class="arw">
         <img
-          src={img11}
+          src={scrollUp}
           style={{ width: "30px", height: "30px", visibility: "visible" }}
         />
       </a>
       <div class="overall">
         <nav>
           <img
-            src={img1}
+            src={index}
             style={{
               width: "50px",
               height: "50px",

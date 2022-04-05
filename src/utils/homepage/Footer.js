@@ -1,9 +1,9 @@
 import React from "react";
 import "./Homepage.css";
-import img2 from "../images/fb.png";
-import img3 from "../images/twitter.png";
-import img4 from "../images/utube.png";
-import img5 from "../images/linkedin.png";
+import fbook from "../../LandinPageImages/fb.png";
+import twitter from "../../LandinPageImages/twitter.png";
+import linkedin from "../../LandinPageImages/linkedin.png";
+import utube from "../../LandinPageImages/utube.png";
 function FooterEMS() {
   return (
     <div>
@@ -14,19 +14,19 @@ function FooterEMS() {
           </div>
           <div class="icons">
             <a href="https://www.facebook.com/EYCareersIndia/">
-              <img src={img2} />
+              <img src={fbook} />
             </a>
 
             <a href="https://twitter.com/EY_India">
-              <img src={img3} />
+              <img src={twitter} />
             </a>
 
             <a href="https://www.youtube.com/channel/UC7yFTL5ES3DQtZV0uRKhdDQ">
-              <img src={img4} />
+              <img src={utube} />
             </a>
 
             <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQG8iyWVOggeYAAAAX-6lu6AcGu-R4jLZ_wMXTLPYO5h4U61-uANg7LJrF5gysoJGu0HOZUnNmxfda76uWC4ervhRgQFAlSH4pykmQKLnj8jAaMeAiX3vHIH42xDzrHfTsTG0h8=&originalReferer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fernstandyoung">
-              <img src={img5} />
+              <img src={linkedin} />
             </a>
           </div>
           <div
