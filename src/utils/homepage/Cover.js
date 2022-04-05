@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Homepage.css";
 
 function Middle() {
@@ -15,23 +16,17 @@ function Middle() {
           </h2>
           <br />
           <div class="buttons">
-            <a href="./signup/signup.html">
-              <div class="SignupButton">
-                <button type="button" class="btn btn-lg">
-                  Sign Up
-                </button>{" "}
-              </div>
-            </a>
+            <div class="SignupButton">
+              <button type="button" class="btn btn-lg">
+                <Link to="signup">Sign Up</Link>
+              </button>{" "}
+            </div>
+
             <br />
             <div class="LoginButton">
               <button type="button" class="btn btn-lg">
-                <a
-                  href="./signin/signin.html"
-                  style={{ textDecoration: "none" }}
-                >
-                  Login
-                </a>{" "}
-              </button>
+                <Link to="login">Login</Link>
+              </button>{" "}
             </div>
           </div>
         </div>

@@ -9,10 +9,6 @@ a {
   color: white;
 }
 
-body {
-  background: #121212;
-}
-
 .cover-background {
   height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
@@ -154,7 +150,6 @@ body {
 
 .main {
   width: 100%;
-  margin: 20px auto;
   margin-top: 0;
   padding-top: 90px;
   padding-bottom: 40px;
