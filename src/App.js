@@ -1,11 +1,9 @@
-import React from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+import React, {Component} from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/login/Login";
-import Signup from "./components/signup/Signup"
+import Signup from "./components/signup/Signup";
+import EmpData from "./components/empData/EmpData";
+import AddEmp from "./components/addEmpFrom/AddEmp";
 import "./App.css";
 
 function App() {
@@ -15,6 +13,8 @@ function App() {
         <Routes>
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/empdata" element={<EmpData />} />
+          <Route exact path="/addemp" element={<AddEmp />} />
         </Routes>
       </BrowserRouter>
     </div>
