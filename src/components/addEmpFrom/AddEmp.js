@@ -1,16 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AddEmp.css";
 
-const AddEmp = () => {
+const AddEmp = (props) => {
+  // props.setFormFalse(false)
+
+  const closeForm = () => {
+    props.setFormFalse(false);
+  };
+
+  const [empName, setEmpName] = useState("");
+  const [empId, setEmpId] = useState("");
+  const [empEmail, setEmpEmail] = useState("");
+  const [empSalary, setEmpSalary] = useState("");
+  const [empDesignation, setEmpDesignation] = useState("");
+  const [empGender, setEmpGender] = useState("");
+  const [empDOB, setEmpDOB] = useState("");
+  const [empJOI, setEmpJOI] = useState("");
+
+  const addEmpData = (e) => {
+    e.preventDefault();
+    console.log(
+      empName,
+      empId,
+      empEmail,
+      empSalary,
+      empDesignation,
+      empGender,
+      empDOB,
+      empJOI
+    );
+  };
+
   return (
     <>
-      <div className="add-employee hidden">
+      <div className="add-employee">
         <div className="emp-form-heading">
           <h3>
-            Employee Detials <span className="cross-add-emp">&times;</span>
+            Employee Detials{" "}
+            <span className="cross-add-emp" onClick={closeForm}>
+              &times;
+            </span>
           </h3>
         </div>
-        <form>
+        <form onSubmit={addEmpData}>
           <div className="empName">
             <input type="text" placeholder="Employee name" />
           </div>
@@ -18,7 +50,7 @@ const AddEmp = () => {
             <input type="text" placeholder="Employee Id" />
           </div>
           <div className="empEmail">
-            <input type="text" placeholder="Employee Id" />
+            <input type="text" placeholder="Email Id" />
           </div>
           <div className="gender-designation">
             <input type="text" placeholder="Gender" />
@@ -26,7 +58,10 @@ const AddEmp = () => {
           </div>
           <div className="salary-dob">
             <input type="text" placeholder="Salary" />
-            <input type="date" />
+            <input
+              type="date"
+              onChange={(e) => setEmpDOB(e.target.value)}
+            />
           </div>
           <div className="joining-date">
             <input type="date" />
@@ -37,7 +72,7 @@ const AddEmp = () => {
           </div>
         </form>
       </div>
-      <div className="overlay hidden"></div>
+      <div className="overlay" onClick={closeForm}></div>
     </>
   );
 };

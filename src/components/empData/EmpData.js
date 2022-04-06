@@ -1,9 +1,26 @@
-import React, { useRef } from "react";
+import React, { useState, useEffect } from "react";
 import AddEmp from "../addEmpFrom/AddEmp";
 import "./EmpData.css";
 
 const EmpData = () => {
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
+  const [employee, setEmployee] = useState(null);
+
+  const [showAddform, setShowAddForm] = useState(false);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/employees")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setEmployee(data);
+      });
+  }, []);
+
+  const openAddForm = () => {
+    setShowAddForm(true);
+  };
 
   return (
     <div className="disBackground">
@@ -41,11 +58,12 @@ const EmpData = () => {
       </div>
       <div className="display-content p-2">
         <div className="crud-buttons">
-          <button className="add-button">
+          <button className="add-button" onClick={openAddForm}>
             <p>
               <i className="fa-solid fa-plus"></i> Add
             </p>
           </button>
+
           <button className="delete-button">
             <p>
               <i className="fa-solid fa-minus"></i> Delete
@@ -94,12 +112,15 @@ const EmpData = () => {
               </tr>
             </thead>
             <tbody className="table-body">
-              {arr.map((obj, index) => {
-                return (
-                  <>
+              {employee &&
+                employee.map((emp, index) => {
+                  if (index > 10) {
+                    return;
+                  }
+                  return (
                     <tr
-                      key={obj}
-                      className={obj % 2 === 0 ? "tr-background" : ""}
+                      key={index}
+                      className={index % 2 === 0 ? "tr-background" : ""}
                     >
                       <td scope="row">
                         <input
@@ -107,24 +128,84 @@ const EmpData = () => {
                           aria-label="Checkbox for following text input"
                         />
                       </td>
-                      <td>Abhishek</td>
-                      <td>123456</td>
-                      <td>Male</td>
-                      <td>SDE</td>
-                      <td>123456</td>
-                      <td>abhishek@gmail.com</td>
-                      <td>22 feb 2000</td>
-                      <td>22 feb 2018</td>
+                      <td>{emp.empId}</td>
+                      <td>{emp.empName}</td>
+                      <td>{emp.gender}</td>
+                      <td>{emp.designation}</td>
+                      <td>{emp.empSalary}</td>
+                      <td>{emp.email}</td>
+                      <td>{emp.dob}</td>
+                      <td>{emp.joiningDate}</td>
                       <td>
                         <i
                           className="fa-solid fa-ellipsis-vertical"
                           style={{ color: "grey", cursor: "pointer" }}
                           data-toggle="modal"
-                          data-target={"#e" + obj}
+                          data-target={"#e" + emp.empId}
                         ></i>
                       </td>
+                      <td>
+                        <div
+                          className="modal fade"
+                          id={"e" + emp.empId}
+                          tabIndex="-1"
+                          aria-labelledby="exampleModalLabel"
+                          aria-hidden="true"
+                        >
+                          <div className="modal-dialog">
+                            <div className="modal-content">
+                              <div className="modal-header">
+                                <h5
+                                  className="modal-title"
+                                  id="exampleModalLabel"
+                                  style={{ color: "black" }}
+                                >
+                                  {emp.empId + "Emplyoee"}
+                                </h5>
+                                <button
+                                  type="button"
+                                  className="btn-close"
+                                  data-dismiss="modal"
+                                  aria-label="Close"
+                                ></button>
+                              </div>
+                              <div className="modal-body">...</div>
+                              <div className="modal-footer">
+                                <button
+                                  type="button"
+                                  className="btn btn-secondary"
+                                  data-bs-dismiss="modal"
+                                >
+                                  Close
+                                </button>
+                                <button
+                                  type="button"
+                                  className="btn btn-primary"
+                                >
+                                  Save changes
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
                     </tr>
-                    <tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {showAddform ? <AddEmp setFormFalse={setShowAddForm} /> : ""}
+    </div>
+  );
+};
+
+export default EmpData;
+
+{
+  /* <tr key={obj + "1"}>
                       <td>
                         <div
                           className="modal fade "
@@ -170,16 +251,5 @@ const EmpData = () => {
                           </div>
                         </div>
                       </td>
-                    </tr>
-                  </>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default EmpData;
+                    </tr>  */
+}

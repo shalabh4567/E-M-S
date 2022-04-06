@@ -3,11 +3,11 @@ import "./Homepage.css";
 
 const CardsEMS = () => {
   return (
-    <div class="main">
-      <div class="card-container">
-        <div class="card">
-          <div class="cardhead">Ernst & Young</div>
-          <div class="cardvalue">
+    <div className="main">
+      <div className="card-container">
+        <div className="card">
+          <div className="cardhead">Ernst & Young</div>
+          <div className="cardvalue">
             Ernst & Young Global Limited, is a multinational network with
             headquarters in London, England. EY operates as a network of member
             firms which are structured as separate legal entities in a
@@ -16,18 +16,18 @@ const CardsEMS = () => {
           </div>
         </div>
 
-        <div class="card left">
-          <div class="cardhead">Employee Management System</div>
-          <div class="cardvalue">
+        <div className="card left">
+          <div className="cardhead">Employee Management System</div>
+          <div className="cardvalue">
             An employee management system provides managers with insights into
             their workforce, and helps them to better plan and manage work hours
             to easily control labor costs and increase productivity.
           </div>
         </div>
 
-        <div class="card">
-          <div class="cardhead">Capstone Project</div>
-          <div class="cardvalue">
+        <div className="card">
+          <div className="cardhead">Capstone Project</div>
+          <div className="cardvalue">
             Creating a web application where user can add employee information
             using CRUD(Create, Read, Update, Delete) operations.
           </div>

@@ -15,7 +15,6 @@ function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/empdata" element={<EmpData />} />
-          <Route exact path="/addemp" element={<AddEmp />} />
           <Route exact path="/" element={<HomePageComponent />} />
         </Routes>
       </BrowserRouter>

@@ -8,11 +8,11 @@ function FooterEMS() {
   return (
     <div>
       <footer>
-        <div class="footer">
-          <div class="emsImg">
+        <div className="footer">
+          <div className="emsImg">
             <img src="https://enterprisemadesimple.co.uk/wp-content/uploads/elementor/thumbs/EMS-Logo-white-pfk9anz76wwpgwk9arkqtyah9zhcb0r3d870byru9s.png" />
           </div>
-          <div class="icons">
+          <div className="icons">
             <a href="https://www.facebook.com/EYCareersIndia/">
               <img src={fbook} />
             </a>
@@ -30,11 +30,11 @@ function FooterEMS() {
             </a>
           </div>
           <div
-            class="text-center p-3"
+            className="text-center p-3"
             style={{ backgroundColor: "rgba(0, 0, 0, 0.2)", color: "white" }}
           >
             © 2022 Copyright:
-            <a class="text-white" href="https://mdbootstrap.com/">
+            <a className="text-white" href="https://mdbootstrap.com/">
               EY-EMS
             </a>
           </div>

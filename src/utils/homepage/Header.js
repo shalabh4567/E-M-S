@@ -73,13 +73,13 @@ function Top() {
   return (
     //scroll
     <div id="top">
-      <a id="ok" href="#top" class="arw">
+      <a id="ok" href="#top" className="arw">
         <img
           src={scrollUp}
           style={{ width: "30px", height: "30px", visibility: "visible" }}
         />
       </a>
-      <div class="overall">
+      <div className="overall">
         <nav>
           <img
             src={index}
@@ -94,18 +94,18 @@ function Top() {
               zIndex: "1000",
             }}
           />
-          <div class="dateTop">
+          <div className="dateTop">
             <b>
               <p id="demo2"></p>
               <p id="demo1"></p>
             </b>
           </div>
-          <div class="NavContainer">
+          <div className="NavContainer">
             &nbsp; &nbsp;
-            <div class="Insights">
+            <div className="Insights">
               <a href="https://www.ey.com/en_in">Insights</a>
             </div>
-            <div class="AboutUs">
+            <div className="AboutUs">
               <a href="#">About Us</a>
             </div>
           </div>
