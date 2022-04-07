@@ -1,0 +1,16 @@
+{
+  "admins": [
+    {
+      "name": "shalabh",
+      "email": "shalabh@gmail.com",
+      "password": "1234",
+      "id": 1
+    },
+    {
+      "name": "shalabh",
+      "email": "sha@gmail.com",
+      "password": "1234",
+      "id": 2
+    }
+  ]
+}

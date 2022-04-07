@@ -1,9 +1,61 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import LeftSide from "../../utils/loginSignupLeftSide/LeftSide";
 import "./Signup.css";
 
 const Signup = () => {
+  const history = useNavigate();
+
+  const [fname, setFname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const fnameError = useRef(null);
+  const emailError = useRef(null);
+  const passwordError = useRef(null);
+
+  const signUp = (e) => {
+    e.preventDefault();
+    console.log(fname, email, password);
+    if (fname && email && password === "") {
+      alert("all fields are required");
+      return;
+    }
+
+    fetch("http://localhost:4000/admins")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.length > 7) {
+          alert("admin limit has been crossed");
+          return;
+        }
+        const isAdmin = data.find((adm) => adm.email === email);
+        if (isAdmin) {
+          alert("your are already an admin");
+          return;
+        }
+
+        fetch("http://localhost:4000/admins", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            name: fname,
+            email: email,
+            password: password,
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            alert("you are now an admin");
+            history("/login");
+          });
+      });
+  };
+
   return (
     <div className="signup-container">
       <LeftSide />
@@ -47,7 +99,7 @@ const Signup = () => {
               <h5>Signup to begin with managing your tasks.</h5>
             </div>
             <div className="forms-for-signup">
-              <form>
+              <form onSubmit={signUp}>
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">
                     Full Name
@@ -56,9 +108,24 @@ const Signup = () => {
                     type="text"
                     className="form-control"
                     id="name"
+                    value={fname}
                     aria-describedby="emailHelp"
                     required
+                    onChange={(e) => {
+                      if (e.target.value.length === 0) {
+                        fnameError.current.innerHTML = "*field is required";
+                        setFname("");
+                        return;
+                      }
+                      fnameError.current.innerHTML = "";
+                      setFname(e.target.value);
+                    }}
                   />
+                  <span
+                    className="errorMessage"
+                    id="emailError"
+                    ref={fnameError}
+                  ></span>
                 </div>
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">
@@ -70,7 +137,21 @@ const Signup = () => {
                     id="email"
                     aria-describedby="emailHelp"
                     required
+                    onChange={(e) => {
+                      if (e.target.value.length === 0) {
+                        emailError.current.innerHTML = "*field is required";
+                        setEmail("");
+                        return;
+                      }
+                      emailError.current.innerHTML = "";
+                      setEmail(e.target.value);
+                    }}
                   />
+                  <span
+                    className="errorMessage"
+                    id="emailError"
+                    ref={emailError}
+                  ></span>
                 </div>
                 <div className="mb-3">
                   <label htmlFor="exampleInputPassword1" className="form-label">
@@ -81,7 +162,21 @@ const Signup = () => {
                     className="form-control"
                     id="password"
                     required
+                    onChange={(e) => {
+                      if (e.target.value.length === 0) {
+                        passwordError.current.innerHTML = "*field is required";
+                        setPassword("");
+                        return;
+                      }
+                      passwordError.current.innerHTML = "";
+                      setPassword(e.target.value);
+                    }}
                   />
+                  <span
+                    className="errorMessage"
+                    id="emailError"
+                    ref={passwordError}
+                  ></span>
                 </div>
                 <button type="submit" className="btn submit-button">
                   Signup

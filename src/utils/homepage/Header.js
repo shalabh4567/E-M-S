@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import "./Homepage.css";
 import scrollUp from "../../LandinPageImages/scroll-up.png";
 import index from "../../LandinPageImages/index.png";
 function Top() {
-  setInterval(() => {
+  const demo2 = useRef(null);
+
+  const interval = () => {
     var date = new Date();
     var m = date.getMonth();
     var month = "";
@@ -57,7 +59,8 @@ function Top() {
         break;
       }
     }
-    document.getElementById("demo2").innerHTML =
+
+    demo2.current.innerHTML =
       date.getHours() +
       ":" +
       date.getMinutes() +
@@ -69,7 +72,15 @@ function Top() {
       month +
       "-" +
       date.getFullYear();
-  }, 1000);
+  };
+
+  useEffect(() => {
+    const timer = setInterval(interval, 1000);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
   return (
     //scroll
     <div id="top">
@@ -96,7 +107,7 @@ function Top() {
           />
           <div className="dateTop">
             <b>
-              <p id="demo2"></p>
+              <p id="demo2" ref={demo2}></p>
               <p id="demo1"></p>
             </b>
           </div>

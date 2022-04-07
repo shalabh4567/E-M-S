@@ -29,6 +29,16 @@
       "designation": "SDEII",
       "dob": "22 feb 2000",
       "joiningDate": "22 feb 2018"
+    },
+    {
+      "empId": 12347,
+      "empName": "Amit",
+      "gender": "Male",
+      "email": "Amit@gmail.com",
+      "empSalary": 123456,
+      "designation": "SDEII",
+      "dob": "22 feb 2000",
+      "joiningDate": "22 feb 2018"
     }
   ]
 }
