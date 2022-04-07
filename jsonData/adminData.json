@@ -4,12 +4,13 @@
       "name": "shalabh",
       "email": "shalabh@gmail.com",
       "password": "1234",
-      "id": 1
+      "id": 1,
+      "isLoggedIn": true
     },
     {
-      "name": "shalabh",
-      "email": "sha@gmail.com",
-      "password": "1234",
+      "name": "shalab",
+      "email": "shalbah@123",
+      "password": "1344",
       "id": 2
     }
   ]

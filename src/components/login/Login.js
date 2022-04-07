@@ -1,9 +1,59 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import LeftSide from "../../utils/loginSignupLeftSide/LeftSide";
 import "./Login.css";
 
 const Login = () => {
+  const history = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const emailError = useRef(null);
+  const passwordError = useRef(null);
+
+  const login = (e) => {
+    e.preventDefault();
+    console.log(email, password);
+    if (email && password === "") {
+      alert("all the fields are required");
+      return;
+    }
+
+    fetch("http://localhost:4000/admins")
+      .then((res) => res.json())
+      .then((data) => {
+        const isAdmin = data.find(
+          (adm) => adm.email === email && adm.password === password
+        );
+        if (!isAdmin) {
+          alert("your are not an admin");
+          return;
+        }
+
+        console.log(isAdmin.id);
+        fetch("http://localhost:4000/admins/" + isAdmin.id, {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ ...isAdmin, isLoggedIn: true }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.isLoggedIn === true) {
+              alert("logged in successfully");
+              history("/empdata");
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            console.log("invalid user");
+          });
+      });
+  };
+
   return (
     <div className="signup-container">
       <LeftSide />
@@ -47,7 +97,7 @@ const Login = () => {
               <h5>Signin to begin with managing your tasks.</h5>
             </div>
             <div className="forms-for-signup">
-              <form>
+              <form onSubmit={login}>
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">
                     Login ID
@@ -57,7 +107,21 @@ const Login = () => {
                     className="form-control"
                     id="email"
                     aria-describedby="emailHelp"
+                    onChange={(e) => {
+                      if (e.target.value.length === 0) {
+                        emailError.current.innerHTML = "*field is required";
+                        setEmail("");
+                        return;
+                      }
+                      emailError.current.innerHTML = "";
+                      setEmail(e.target.value);
+                    }}
                   />
+                  <span
+                    className="errorMessage"
+                    id="emailError"
+                    ref={emailError}
+                  ></span>
                 </div>
                 <div className="mb-3">
                   <label htmlFor="exampleInputPassword1" className="form-label">
@@ -67,7 +131,21 @@ const Login = () => {
                     type="password"
                     className="form-control"
                     id="password"
+                    onChange={(e) => {
+                      if (e.target.value.length === 0) {
+                        passwordError.current.innerHTML = "*field is required";
+                        setPassword("");
+                        return;
+                      }
+                      passwordError.current.innerHTML = "";
+                      setPassword(e.target.value);
+                    }}
                   />
+                  <span
+                    className="errorMessage"
+                    id="passwordError"
+                    ref={passwordError}
+                  ></span>
                 </div>
                 <button type="submit" className="btn submit-button">
                   Signin
