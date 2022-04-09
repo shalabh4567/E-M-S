@@ -4,6 +4,7 @@ import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
 import EmpData from "./components/empData/EmpData";
 import HomePageComponent from "./components/homePageComponent/HomePageComponent";
+import Dashboard from "./components/dashboardComponent/DashboardComponent";
 import "./App.css";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/empdata" element={<EmpData />} />
           <Route exact path="/" element={<HomePageComponent />} />
+          <Route exact path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </div>
