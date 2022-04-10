@@ -15,6 +15,9 @@ const EmpData = () => {
       .then((data) => {
         console.log(data);
         setEmployee(data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
 
@@ -114,9 +117,6 @@ const EmpData = () => {
             <tbody className="table-body">
               {employee &&
                 employee.map((emp, index) => {
-                  if (index > 10) {
-                    return;
-                  }
                   return (
                     <tr
                       key={index}
@@ -126,6 +126,7 @@ const EmpData = () => {
                         <input
                           type="checkbox"
                           aria-label="Checkbox for following text input"
+                          className="empCheck"
                         />
                       </td>
                       <td>{emp.empId}</td>
@@ -197,7 +198,15 @@ const EmpData = () => {
         </div>
       </div>
 
-      {showAddform ? <AddEmp setFormFalse={setShowAddForm} /> : ""}
+      {showAddform ? (
+        <AddEmp
+          setFormFalse={setShowAddForm}
+          setEmployee={setEmployee}
+          employee={employee}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

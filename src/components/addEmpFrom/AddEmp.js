@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./AddEmp.css";
 
 const AddEmp = (props) => {
   // props.setFormFalse(false)
+
+  const history = useNavigate();
+
+  //console.log(props.employee)
 
   const closeForm = () => {
     props.setFormFalse(false);
@@ -29,6 +34,29 @@ const AddEmp = (props) => {
       empDOB,
       empJOI
     );
+
+    fetch("http://localhost:3001/employees", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        empId: empId,
+        empName: empName,
+        gender: empGender,
+        email: empEmail,
+        empSalary: empSalary,
+        designation: empDesignation,
+        dob: empDOB,
+        joiningDate: empJOI,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        props.setFormFalse(false);
+        props.setEmployee([...props.employee, data]);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -44,27 +72,74 @@ const AddEmp = (props) => {
         </div>
         <form onSubmit={addEmpData}>
           <div className="empName">
-            <input type="text" placeholder="Employee name" />
+            <input
+              type="text"
+              placeholder="Employee name"
+              value={empName}
+              required
+              onChange={(e) => setEmpName(e.target.value)}
+            />
           </div>
           <div className="empId">
-            <input type="text" placeholder="Employee Id" />
+            <input
+              type="text"
+              placeholder="Employee Id"
+              value={empId}
+              required
+              onChange={(e) => setEmpId(e.target.value)}
+            />
           </div>
           <div className="empEmail">
-            <input type="text" placeholder="Email Id" />
+            <input
+              type="text"
+              placeholder="Email Id"
+              value={empEmail}
+              required
+              onChange={(e) => setEmpEmail(e.target.value)}
+            />
           </div>
           <div className="gender-designation">
-            <input type="text" placeholder="Gender" />
-            <input type="text" placeholder="Designation" />
+            <input
+              type="text"
+              placeholder="Gender"
+              value={empGender}
+              required
+              onChange={(e) => setEmpGender(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Designation"
+              value={empDesignation}
+              required
+              onChange={(e) => setEmpDesignation(e.target.value)}
+            />
           </div>
           <div className="salary-dob">
-            <input type="text" placeholder="Salary" />
+            <input
+              type="text"
+              placeholder="Salary"
+              value={empSalary}
+              required
+              onChange={(e) => setEmpSalary(e.target.value)}
+            />
             <input
               type="date"
+              onFocus={(e) => (e.currentTarget.type = "date")}
+              onBlur={(e) => (e.currentTarget.type = "text")}
+              value={empDOB}
+              required
               onChange={(e) => setEmpDOB(e.target.value)}
             />
           </div>
           <div className="joining-date">
-            <input type="date" />
+            <input
+              type="text"
+              onFocus={(e) => (e.currentTarget.type = "date")}
+              onBlur={(e) => (e.currentTarget.type = "text")}
+              placeholder="joining date(dd/mm/yyyy)"
+              value={empJOI}
+              onChange={(e) => setEmpJOI(e.target.value)}
+            />
           </div>
 
           <div className="add-emp-button">

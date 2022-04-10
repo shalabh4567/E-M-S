@@ -1,44 +1,37 @@
 {
   "employees": [
     {
-      "empId": 12345,
+      "empId": "12345",
       "empName": "Abhishek",
       "gender": "Male",
-      "email": "abhishek@gmail.com",
-      "empSalary": 123456,
+      "email": "shalabh@gmail.com",
+      "empSalary": "1234585",
       "designation": "SDE",
-      "dob": "22 feb 2000",
-      "joiningDate": "22 feb 2018"
+      "dob": "2000-03-04",
+      "joiningDate": "2021-06-05",
+      "id": 1
     },
     {
-      "empId": 12346,
-      "empName": "Satish",
+      "empId": "12345",
+      "empName": "Abhishek",
       "gender": "Male",
-      "email": "satish@gmail.com",
-      "empSalary": 123456,
-      "designation": "Ass. Manager",
-      "dob": "22 feb 2000",
-      "joiningDate": "22 feb 2018"
+      "email": "shalabh@gmail.com",
+      "empSalary": "1234585",
+      "designation": "SDE",
+      "dob": "2000-03-04",
+      "joiningDate": "2021-06-05",
+      "id": 1
     },
     {
-      "empId": 12347,
-      "empName": "Amit",
+      "empId": "12345",
+      "empName": "Abhishek",
       "gender": "Male",
-      "email": "Amit@gmail.com",
-      "empSalary": 123456,
-      "designation": "SDEII",
-      "dob": "22 feb 2000",
-      "joiningDate": "22 feb 2018"
-    },
-    {
-      "empId": 12347,
-      "empName": "Amit",
-      "gender": "Male",
-      "email": "Amit@gmail.com",
-      "empSalary": 123456,
-      "designation": "SDEII",
-      "dob": "22 feb 2000",
-      "joiningDate": "22 feb 2018"
+      "email": "shalabh@gmail.com",
+      "empSalary": "1234585",
+      "designation": "SDE",
+      "dob": "2000-03-04",
+      "joiningDate": "2021-06-05",
+      "id": 1
     }
   ]
 }
