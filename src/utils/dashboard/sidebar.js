@@ -5,7 +5,7 @@ import './Dashboard.css';
 
 const Sidebar = () => {
   return (
-    <div className={`${styles.sidebar} active hello`}>
+    <div className={`${styles.sidebar} hello`}>
         <div className={styles['side-logo']}>
             <img src={logo}/>
             <span className={styles['side-logo-name']}>Ernst & Young</span>

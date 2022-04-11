@@ -27,7 +27,7 @@ function Nav() {
             </div>
             <div className={styles.searchbar}>
                 <input type={styles.text} placeholder={'Search...'}/>
-                <i className={'bx bx-search'}></i>
+                <i className={'bx bx-search'} ></i>
             </div>
             <div className={styles.rightnav}>
                 <img src={logo}/>

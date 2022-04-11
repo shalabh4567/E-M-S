@@ -163,7 +163,7 @@ nav .searchbar input {
   color: #fff;
 }
 
-nav .searchbar .bx-search {
+nav .searchbar i {
   position: absolute;
   height: 40px;
   width: 40px;
@@ -391,13 +391,13 @@ nav .rightnav i {
   background-color: #666;
 }
 
-.sidebar.active ~ .main {
+.active ~ section {
   width: calc(100% - 60px);
   left: 60px;
   transition: 0.5s ease;
 }
 
-.sidebar.active ~ .main nav {
+.active ~ section nav {
   left: 60px;
   width: calc(100% - 60px);
   transition: 0.5s ease;
@@ -423,15 +423,15 @@ nav .rightnav i {
     width: 100%;
   }
 
-  .sidebar.active {
+  .active {
     width: 220px;
   }
-  .sidebar.active ~ .main {
+  .active ~ section {
     overflow: hidden;
     left: 220px;
   }
 
-  .sidebar.active ~ .main nav {
+  .active ~ section nav {
     width: calc(100% - 220px);
     left: 220px;
   }
@@ -443,7 +443,7 @@ nav .rightnav i {
     margin-bottom: 15px;
   }
 
-  .sidebar.active {
+  .active {
     width: 220px;
   }
 
@@ -481,7 +481,7 @@ nav .rightnav i {
     margin-bottom: 15px;
   }
 
-  .sidebar.active ~ .main nav .rightnav {
+  .active ~ section nav .rightnav {
     display: none;
   }
 }
