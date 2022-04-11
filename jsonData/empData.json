@@ -1,37 +1,26 @@
 {
   "employees": [
     {
-      "empId": "12345",
-      "empName": "Abhishek",
+      "empId": "123456",
+      "empName": "Sayant",
       "gender": "Male",
-      "email": "shalabh@gmail.com",
-      "empSalary": "1234585",
-      "designation": "SDE",
+      "email": "sayantan@gmail.com",
+      "empSalary": "1234587",
+      "designation": "Manager",
       "dob": "2000-03-04",
       "joiningDate": "2021-06-05",
       "id": 1
     },
     {
-      "empId": "12345",
-      "empName": "Abhishek",
+      "empId": "123548",
+      "empName": "Shalabh",
       "gender": "Male",
       "email": "shalabh@gmail.com",
-      "empSalary": "1234585",
+      "empSalary": "123458",
       "designation": "SDE",
-      "dob": "2000-03-04",
-      "joiningDate": "2021-06-05",
-      "id": 1
-    },
-    {
-      "empId": "12345",
-      "empName": "Abhishek",
-      "gender": "Male",
-      "email": "shalabh@gmail.com",
-      "empSalary": "1234585",
-      "designation": "SDE",
-      "dob": "2000-03-04",
-      "joiningDate": "2021-06-05",
-      "id": 1
+      "dob": "2000-05-04",
+      "joiningDate": "2021-05-04",
+      "id": 2
     }
   ]
 }

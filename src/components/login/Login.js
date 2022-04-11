@@ -44,7 +44,7 @@ const Login = () => {
             console.log(data);
             if (data.isLoggedIn === true) {
               alert("logged in successfully");
-              history("/empdata");
+              history("/dashboard");
             }
           })
           .catch((err) => {

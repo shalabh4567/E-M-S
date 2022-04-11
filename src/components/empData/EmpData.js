@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AddEmp from "../addEmpFrom/AddEmp";
+import UpdateDataForm from "../updateDataForm/UpdateDataForm";
+import Sidebar from "../../utils/dashboard/sidebar";
 import "./EmpData.css";
 
 const EmpData = () => {
@@ -8,6 +10,9 @@ const EmpData = () => {
   const [employee, setEmployee] = useState(null);
 
   const [showAddform, setShowAddForm] = useState(false);
+  const [showUpdateForm, setUpdateForm] = useState(false);
+
+  const [updateId, setUpdateId] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:3001/employees")
@@ -26,6 +31,8 @@ const EmpData = () => {
   };
 
   return (
+
+    
     <div className="disBackground">
       <div className="heading">
         <svg
@@ -144,6 +151,26 @@ const EmpData = () => {
                           data-toggle="modal"
                           data-target={"#e" + emp.empId}
                         ></i>
+                        <i
+                          className="fa-solid fa-pen"
+                          style={{
+                            color: "grey",
+                            cursor: "pointer",
+                            paddingLeft: "7px",
+                          }}
+                          onClick={(e) => {
+                            setUpdateForm(true);
+                            setUpdateId(emp.id);
+                          }}
+                        ></i>
+                        <i
+                          className="fa-solid fa-trash-can"
+                          style={{
+                            color: "grey",
+                            cursor: "pointer",
+                            paddingLeft: "7px",
+                          }}
+                        ></i>
                       </td>
                       <td>
                         <div
@@ -201,6 +228,17 @@ const EmpData = () => {
       {showAddform ? (
         <AddEmp
           setFormFalse={setShowAddForm}
+          setEmployee={setEmployee}
+          employee={employee}
+        />
+      ) : (
+        ""
+      )}
+
+      {showUpdateForm ? (
+        <UpdateDataForm
+          setUpdateForm={setUpdateForm}
+          updateId={updateId}
           setEmployee={setEmployee}
           employee={employee}
         />

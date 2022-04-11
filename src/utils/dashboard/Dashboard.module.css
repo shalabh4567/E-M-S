@@ -1,8 +1,9 @@
-* ,ul,li{
+*,
+ul,
+li {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
 }
 
 :root {
@@ -18,8 +19,6 @@ body {
   min-height: 100vh;
   width: 100%;
 }
-
-
 
 .sidebar {
   position: fixed;
@@ -112,7 +111,7 @@ body {
   transition: 0.5s ease;
 }
 
-.maN{
+.maN {
   min-height: unset;
 }
 
