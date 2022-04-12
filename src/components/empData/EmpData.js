@@ -3,6 +3,7 @@ import AddEmp from "../addEmpFrom/AddEmp";
 import UpdateDataForm from "../updateDataForm/UpdateDataForm";
 import Sidebar from "../../utils/dashboard/sidebar";
 import "./EmpData.css";
+import DeleteData from "../DeleteDataForm/DeleteData";
 
 const EmpData = () => {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
@@ -10,9 +11,12 @@ const EmpData = () => {
   const [employee, setEmployee] = useState(null);
 
   const [showAddform, setShowAddForm] = useState(false);
-  const [showUpdateForm, setUpdateForm] = useState(false);
 
+  const [showUpdateForm, setUpdateForm] = useState(false);
   const [updateId, setUpdateId] = useState("");
+
+  const [showDeleteForm, setDeleteForm] = useState(false);
+  const [deleteId, setDeleteId] = useState(""); 
 
   useEffect(() => {
     fetch("http://localhost:3001/employees")
@@ -170,6 +174,10 @@ const EmpData = () => {
                             cursor: "pointer",
                             paddingLeft: "7px",
                           }}
+                          onClick={(e) => {
+                            setDeleteForm(true);
+                            setDeleteId(emp.id);
+                          }}
                         ></i>
                       </td>
                       <td>
@@ -245,6 +253,17 @@ const EmpData = () => {
       ) : (
         ""
       )}
+{showDeleteForm ? (
+        <DeleteData
+          setDeleteForm={setDeleteForm}
+          deleteId={deleteId}
+          setEmployee={setEmployee}
+          employee={employee}
+        />
+      ) : (
+        ""
+      )}
+
     </div>
   );
 };
