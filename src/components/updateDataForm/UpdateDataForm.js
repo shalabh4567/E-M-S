@@ -58,7 +58,7 @@ const AddEmp = (props) => {
       <div className="add-employee">
         <div className="emp-form-heading">
           <h3>
-            Employee Details{" "}
+            Update Details{" "}
             <span className="cross-add-emp" onClick={closeForm}>
               &times;
             </span>
@@ -96,13 +96,17 @@ const AddEmp = (props) => {
               />
             </div>
             <div className="gender-designation">
-              <input
-                type="text"
-                placeholder="Gender"
+              <select
+                name="gender"
+                id="gender"
                 defaultValue={updateEmpData.gender}
-                required
                 onChange={(e) => setEmpGender(e.target.value)}
-              />
+              >
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Others">Others</option>
+              </select>
+
               <input
                 type="text"
                 placeholder="Designation"
