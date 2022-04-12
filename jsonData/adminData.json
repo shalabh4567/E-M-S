@@ -18,6 +18,13 @@
       "password": "1234",
       "id": 3,
       "isLoggedIn": true
+    },
+    {
+      "name": "Ipsita Roy",
+      "email": "iroy@gmail.com",
+      "password": "iroy",
+      "id": 4,
+      "isLoggedIn": true
     }
   ]
 }

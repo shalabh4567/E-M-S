@@ -1,17 +1,6 @@
 {
   "employees": [
     {
-      "empId": "123456",
-      "empName": "Sayant",
-      "gender": "Male",
-      "email": "sayantan@gmail.com",
-      "empSalary": "1234587",
-      "designation": "Manager",
-      "dob": "2000-03-04",
-      "joiningDate": "2021-06-05",
-      "id": 1
-    },
-    {
       "empId": "123548",
       "empName": "Shalabh",
       "gender": "Male",
@@ -21,6 +10,17 @@
       "dob": "2000-05-04",
       "joiningDate": "2021-05-04",
       "id": 2
+    },
+    {
+      "empId": "12",
+      "empName": "Ipsita Roy",
+      "gender": "Female",
+      "email": "ip@gmail.com",
+      "empSalary": "30000",
+      "designation": "se",
+      "dob": "2000-04-05",
+      "joiningDate": "2022-04-04",
+      "id": 3
     }
   ]
 }
