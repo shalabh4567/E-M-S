@@ -99,13 +99,16 @@ const AddEmp = (props) => {
             />
           </div>
           <div className="gender-designation">
-            <input
-              type="text"
-              placeholder="Gender"
-              value={empGender}
-              required
+            <select
+              name="gender"
+              id="gender"
+              defaultValue="Male"
               onChange={(e) => setEmpGender(e.target.value)}
-            />
+            >
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Others">Others</option>
+            </select>
             <input
               type="text"
               placeholder="Designation"
