@@ -102,11 +102,12 @@ const EmpData = () => {
                   />
                 </th>
                 <th scope="col">
-                  <h3>Emp Name</h3>
-                </th>
-                <th scope="col">
                   <h3>Emp Id</h3>
                 </th>
+                <th scope="col">
+                  <h3>Emp Name</h3>
+                </th>
+                
                 <th scope="col">
                   <h3>Gender</h3>
                 </th>
