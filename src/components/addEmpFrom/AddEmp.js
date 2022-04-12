@@ -64,7 +64,7 @@ const AddEmp = (props) => {
       <div className="add-employee">
         <div className="emp-form-heading">
           <h3>
-            Employee Detials{" "}
+            Employee Details{" "}
             <span className="cross-add-emp" onClick={closeForm}>
               &times;
             </span>
