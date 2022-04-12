@@ -1,23 +1,4 @@
 {
   "admins": [
-    {
-      "name": "shalabh",
-      "email": "shalabh@gmail.com",
-      "password": "1234",
-      "id": 1
-    },
-    {
-      "name": "shalab",
-      "email": "shalbah@123",
-      "password": "1344",
-      "id": 2
-    },
-    {
-      "name": "ajay",
-      "email": "ajay@gmail.com",
-      "password": "1234",
-      "id": 3,
-      "isLoggedIn": true
-    }
   ]
 }

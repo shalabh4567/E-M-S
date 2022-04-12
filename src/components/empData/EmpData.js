@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import AddEmp from "../addEmpFrom/AddEmp";
 import UpdateDataForm from "../updateDataForm/UpdateDataForm";
 import Sidebar from "../../utils/dashboard/sidebar";
@@ -16,7 +17,8 @@ const EmpData = () => {
   const [updateId, setUpdateId] = useState("");
 
   const [showDeleteForm, setDeleteForm] = useState(false);
-  const [deleteId, setDeleteId] = useState(""); 
+  const [deleteId, setDeleteId] = useState("");
+  const [deleteIndex, setDeleteIndex] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:3001/employees")
@@ -35,40 +37,40 @@ const EmpData = () => {
   };
 
   return (
-
-    
     <div className="disBackground">
       <div className="heading">
-        <svg
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          x="0px"
-          y="0px"
-          viewBox="0 0 113 55"
-          className="logo-name-Image"
-          style={{ enableBackground: "new 0 0 113 55" }}
-          xmlSpace="preserve"
-        >
-          <clipPath id="ey-logo-first-line">
-            <rect x="42" y="36" width="71" height="10" />
-          </clipPath>
-          <clipPath id="ey-logo-second-line">
-            <rect x="42" y="46" width="71" height="10" />
-          </clipPath>
-          <polygon
-            className="ey-logo-yellow"
-            points="51.2,0 0,19.3 0,19.3 51.2,10 "
-            style={{ fill: "yellow" }}
-          />
-          <polygon
-            points="34.3,27 30,35.5 25.6,27 17,27 26.1,42.7 26.1,52.9 33.8,52.9 33.8,42.7 42.8,27 "
-            style={{ fill: "white" }}
-          />
-          <polygon
-            points="7.7,42.7 17,42.7 17,37.3 7.7,37.3 7.7,33 18,33 14.6,27 0,27 0,52.9 20.6,52.9 20.6,47 7.7,47 "
-            style={{ fill: "white" }}
-          />
-        </svg>
+        <Link to="/dashboard">
+          <svg
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            viewBox="0 0 113 55"
+            className="logo-name-Image"
+            style={{ enableBackground: "new 0 0 113 55" }}
+            xmlSpace="preserve"
+          >
+            <clipPath id="ey-logo-first-line">
+              <rect x="42" y="36" width="71" height="10" />
+            </clipPath>
+            <clipPath id="ey-logo-second-line">
+              <rect x="42" y="46" width="71" height="10" />
+            </clipPath>
+            <polygon
+              className="ey-logo-yellow"
+              points="51.2,0 0,19.3 0,19.3 51.2,10 "
+              style={{ fill: "yellow" }}
+            />
+            <polygon
+              points="34.3,27 30,35.5 25.6,27 17,27 26.1,42.7 26.1,52.9 33.8,52.9 33.8,42.7 42.8,27 "
+              style={{ fill: "white" }}
+            />
+            <polygon
+              points="7.7,42.7 17,42.7 17,37.3 7.7,37.3 7.7,33 18,33 14.6,27 0,27 0,52.9 20.6,52.9 20.6,47 7.7,47 "
+              style={{ fill: "white" }}
+            />
+          </svg>
+        </Link>
       </div>
       <div className="display-content p-2">
         <div className="crud-buttons">
@@ -177,6 +179,7 @@ const EmpData = () => {
                           onClick={(e) => {
                             setDeleteForm(true);
                             setDeleteId(emp.id);
+                            setDeleteIndex(index);
                           }}
                         ></i>
                       </td>
@@ -253,17 +256,17 @@ const EmpData = () => {
       ) : (
         ""
       )}
-{showDeleteForm ? (
+      {showDeleteForm ? (
         <DeleteData
           setDeleteForm={setDeleteForm}
           deleteId={deleteId}
           setEmployee={setEmployee}
           employee={employee}
+          deleteIndex={deleteIndex}
         />
       ) : (
         ""
       )}
-
     </div>
   );
 };
