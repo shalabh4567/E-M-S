@@ -16,11 +16,9 @@ const LeftSide = () => {
             <h6>Turning Imaginations to reality.</h6>
           </div>
           <div className="heading-paragraph">
+            <br/>
             <h6>
-              “Lörem ipsum neling mot utan gigapyskapet. Harar deledes, på
-              epitöska preheten. Doll selingar. Matsv innsbutik monönde i berel
-              ing de göbepp och ologi. Åbev kasamma i euras gisk. sbu tikm
-              onönde i ber eling de gö be pp och dologi.”
+              “Creativity is inventing, experimenting, growing, taking risks, breaking rules, making mistakes, and having fun.”
             </h6>
           </div>
           <div className="author">
@@ -28,8 +26,8 @@ const LeftSide = () => {
               <div className="author-dashed"></div>
             </div>
             <div className="author-name">
-              <h5>Lörem ipsum neling</h5>
-              <h6>berem ipsum göbepp och</h6>
+              <h5>Mary Lou Cook</h5>
+              
             </div>
           </div>
         </div>
