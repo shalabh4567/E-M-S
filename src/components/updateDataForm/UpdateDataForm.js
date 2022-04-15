@@ -28,6 +28,7 @@ const AddEmp = (props) => {
   }, []);
 
   const updateForm = (e) => {
+    e.preventDefault();
     fetch("http://localhost:3001/employees/" + props.updateId, {
       method: "PUT",
       headers: {
@@ -49,6 +50,9 @@ const AddEmp = (props) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        // props.setUpdateForm(false);
+        props.upDateData(data);
+        props.setUpdateForm(false);
       })
       .catch((err) => console.log(err));
   };
@@ -97,7 +101,6 @@ const AddEmp = (props) => {
             </div>
             <div className="gender-designation">
               <select
-                name="gender"
                 id="gender"
                 defaultValue={updateEmpData.gender}
                 onChange={(e) => setEmpGender(e.target.value)}

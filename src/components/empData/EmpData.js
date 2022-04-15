@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import AddEmp from "../addEmpFrom/AddEmp";
 import UpdateDataForm from "../updateDataForm/UpdateDataForm";
@@ -7,8 +7,6 @@ import "./EmpData.css";
 import DeleteData from "../DeleteDataForm/DeleteData";
 
 const EmpData = () => {
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-
   const [employee, setEmployee] = useState(null);
 
   const [showAddform, setShowAddForm] = useState(false);
@@ -19,6 +17,10 @@ const EmpData = () => {
   const [showDeleteForm, setDeleteForm] = useState(false);
   const [deleteId, setDeleteId] = useState("");
   const [deleteIndex, setDeleteIndex] = useState(null);
+
+  const [checkedAll, setCheckedAll] = useState(false);
+
+  const checkAllEmp = useRef(null);
 
   useEffect(() => {
     fetch("http://localhost:3001/employees")
@@ -32,13 +34,37 @@ const EmpData = () => {
       });
   }, []);
 
+  const upDateData = (obj) => {
+    fetch("http://localhost:3001/employees")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setEmployee(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const openAddForm = () => {
     setShowAddForm(true);
+  };
+
+  const allChecked = (e) => {
+    //console.log(e.target.value);
+    if (checkedAll === true) {
+      console.log(document.getElementsByClassName("empCheck").length);
+    } else {
+      console.log(document.getElementsByClassName("empCheck"));
+    }
   };
 
   return (
     <div className="disBackground">
       <div className="heading">
+        <Link to="/dashboard">
+          <i className="fa-solid fa-arrow-left back-arrow"></i>
+        </Link>
         <Link to="/dashboard">
           <svg
             version="1.1"
@@ -98,7 +124,10 @@ const EmpData = () => {
                 <th scope="col">
                   <input
                     type="checkbox"
-                    aria-label="Checkbox for following text input"
+                    onChange={(e) => {
+                      setCheckedAll(!checkedAll);
+                      allChecked(e);
+                    }}
                   />
                 </th>
                 <th scope="col">
@@ -107,7 +136,7 @@ const EmpData = () => {
                 <th scope="col">
                   <h3>Emp Name</h3>
                 </th>
-                
+
                 <th scope="col">
                   <h3>Gender</h3>
                 </th>
@@ -141,6 +170,7 @@ const EmpData = () => {
                           type="checkbox"
                           aria-label="Checkbox for following text input"
                           className="empCheck"
+                          name="empCheck"
                         />
                       </td>
                       <td>{emp.empId}</td>
@@ -253,6 +283,7 @@ const EmpData = () => {
           updateId={updateId}
           setEmployee={setEmployee}
           employee={employee}
+          upDateData={upDateData}
         />
       ) : (
         ""

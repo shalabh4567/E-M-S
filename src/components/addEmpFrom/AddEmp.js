@@ -18,7 +18,7 @@ const AddEmp = (props) => {
   const [empEmail, setEmpEmail] = useState("");
   const [empSalary, setEmpSalary] = useState("");
   const [empDesignation, setEmpDesignation] = useState("");
-  const [empGender, setEmpGender] = useState("");
+  const [empGender, setEmpGender] = useState("Male");
   const [empDOB, setEmpDOB] = useState("");
   const [empJOI, setEmpJOI] = useState("");
 
@@ -34,6 +34,8 @@ const AddEmp = (props) => {
       empDOB,
       empJOI
     );
+
+    
 
     fetch("http://localhost:3001/employees", {
       method: "POST",
@@ -102,8 +104,11 @@ const AddEmp = (props) => {
             <select
               name="gender"
               id="gender"
-              defaultValue="Male"
-              onChange={(e) => setEmpGender(e.target.value)}
+              value={empGender}
+              onChange={(e) => {
+                console.log(e.target.value);
+                setEmpGender(e.target.value);
+              }}
             >
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -146,7 +151,7 @@ const AddEmp = (props) => {
           </div>
 
           <div className="add-emp-button">
-            <button>Submit</button>
+            <button type="submit">Submit</button>
           </div>
         </form>
       </div>
