@@ -15,11 +15,10 @@ const AddEmp = (props) => {
 
 
   const [empName, setEmpName] = useState(null);
-  const [empId, setEmpId] = useState(null);
   const [empEmail, setEmpEmail] = useState(null);
   const [empSalary, setEmpSalary] = useState(null);
   const [empDesignation, setEmpDesignation] = useState(null);
-  const [empGender, setEmpGender] = useState(null);
+  const [empGender, setEmpGender] = useState();
   const [empDOB, setEmpDOB] = useState(null);
   const [empJOI, setEmpJOI] = useState(null);
 
@@ -27,7 +26,6 @@ const AddEmp = (props) => {
     e.preventDefault();
     console.log(
       empName,
-      empId,
       empEmail,
       empSalary,
       empDesignation,
@@ -35,10 +33,16 @@ const AddEmp = (props) => {
       empDOB,
       empJOI
     );
-    if (empName && empId && empEmail && empSalary && empDesignation === "") {
+    if (empName && empEmail && empSalary && empDesignation === "") {
       alert("all fields are required");
       return;
     }
+
+    let emId=parseInt(localStorage.getItem("latestEmpId"))+1;
+    
+    console.log(emId);
+    let empId=emId;
+    localStorage.setItem("latestEmpId",emId);
 
     fetch("http://localhost:3001/employees", {
       method: "POST",
@@ -64,29 +68,29 @@ const AddEmp = (props) => {
       .catch((err) => console.log(err));
   };
   
-  const [checkId, setcheckId] = useState(false);
+  // const [checkId, setcheckId] = useState(false);
   const [checkMail, setcheckMail] = useState(false);
 
   useEffect(() => {
-    setcheckId(false);
+    // setcheckId(false);
     setcheckMail(false);
    props.employee.map((em, index) => {
-        if(em.empId===empId){
-          setcheckId(true);
-        }
+        // if(em.empId===empId){
+        //   setcheckId(true);
+        // }
 
         if(em.email===empEmail){
           setcheckMail(true);
         }
   })
-  if(checkId){
-    alert("Employee Id already exist!");
-  }
+  // if(checkId){
+  //   alert("Employee Id already exist!");
+  // }
   if(checkMail)
   {
     alert("Employee Email already exist!");
   }
-  }, [empId, empEmail, checkMail]);
+  }, [empEmail, checkMail]);
 
   return (
     <>
@@ -109,7 +113,7 @@ const AddEmp = (props) => {
               onChange={(e) => setEmpName(e.target.value)}
             />
           </div>
-          <div className="empId">
+          {/* <div className="empId">
             <input
               type="text"
               placeholder="Employee Id"
@@ -117,7 +121,7 @@ const AddEmp = (props) => {
               required
               onChange={(e) => setEmpId(e.target.value)}
             />
-          </div>
+          </div> */}
           <div className="empEmail">
             <input
               type="text"
@@ -158,6 +162,7 @@ const AddEmp = (props) => {
               type="date"
               onFocus={(e) => (e.currentTarget.type = "date")}
               onBlur={(e) => (e.currentTarget.type = "text")}
+              placeholder="DOB(dd/mm/yyyy)"
               value={empDOB}
               required
               onChange={(e) => setEmpDOB(e.target.value)}
@@ -168,7 +173,7 @@ const AddEmp = (props) => {
               type="text"
               onFocus={(e) => (e.currentTarget.type = "date")}
               onBlur={(e) => (e.currentTarget.type = "text")}
-              placeholder="joining date(dd/mm/yyyy)"
+              placeholder="Joining date(dd/mm/yyyy)"
               value={empJOI}
               onChange={(e) => setEmpJOI(e.target.value)}
             />
