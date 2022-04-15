@@ -2,7 +2,7 @@
   "employees": [
     {
       "empId": "123548",
-      "empName": "Ajay",
+      "empName": "Shalabh",
       "gender": "Male",
       "email": "shalabh@gmail.com",
       "empSalary": "123458",
@@ -21,6 +21,39 @@
       "dob": "2000-05-04",
       "joiningDate": "2021-06-05",
       "id": 3
+    },
+    {
+      "empId": "123456",
+      "empName": "Sayantan",
+      "gender": "Male",
+      "email": "sayantan@gmail.com",
+      "empSalary": "50,000",
+      "designation": "ASE",
+      "dob": "1993-04-13",
+      "joiningDate": "2022-04-05",
+      "id": 4
+    },
+    {
+      "empId": "123457",
+      "empName": "Saptarshi",
+      "gender": "Male",
+      "email": "saptarshi@gmail.com",
+      "empSalary": "60,000",
+      "designation": "Senior Analyst",
+      "dob": "1990-05-01",
+      "joiningDate": "2022-04-12",
+      "id": 5
+    },
+    {
+      "empId": "56",
+      "empName": "Mayank",
+      "gender": "Male",
+      "email": "mayank@gmail.com",
+      "empSalary": "26000",
+      "designation": "SDE",
+      "dob": "2022-04-01",
+      "joiningDate": "2022-04-30",
+      "id": 6
     }
   ]
 }
