@@ -1,5 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Toast from "react-bootstrap/Toast";
+import ToastContainer from "react-bootstrap/Toast";
 import LeftSide from "../../utils/loginSignupLeftSide/LeftSide";
 import "./Login.css";
 
@@ -8,6 +10,7 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [show, setShow] = useState(false);
 
   const emailError = useRef(null);
   const passwordError = useRef(null);
@@ -19,6 +22,10 @@ const Login = () => {
       alert("all the fields are required");
       return;
     }
+
+    const sleep = (ms) => {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    };
 
     fetch("http://localhost:4000/admins")
       .then((res) => res.json())
@@ -43,8 +50,9 @@ const Login = () => {
           .then((data) => {
             console.log(data);
             if (data.isLoggedIn === true) {
-              alert("logged in successfully");
-              history("/dashboard");
+              setShow(true);
+              sleep(2000).then(() => history("/dashboard"))
+              
             }
           })
           .catch((err) => {
@@ -56,6 +64,25 @@ const Login = () => {
 
   return (
     <div className="signup-container">
+      <Toast
+        position="top-end"
+        style={{
+          position: "absolute",
+          right: "10px",
+          top: "10px",
+          background: "yellow",
+        }}
+        show={show}
+        onClose={() => setShow(false)}
+        delay={1000}
+        autohide
+      >
+        <Toast.Header closeButton={false}>
+          <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
+          <strong className="me-auto" style={{color: "black"}}>Logged In succesfully</strong>
+        </Toast.Header>
+      </Toast>
+
       <LeftSide />
       <div className="right-view">
         <div className="right-view-inner">

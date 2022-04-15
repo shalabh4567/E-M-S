@@ -9,6 +9,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.back-arrow {
+  position: absolute;
+  font-size: 1.3rem;
+  left: 30px;
+  color: #fff;
 }
 
 svg {

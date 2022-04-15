@@ -26,10 +26,6 @@ const Signup = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.length > 7) {
-          alert("admin limit has been crossed");
-          return;
-        }
         const isAdmin = data.find((adm) => adm.email === email);
         if (isAdmin) {
           alert("your are already an admin");

@@ -11,7 +11,7 @@ const AddEmp = (props) => {
   const [empEmail, setEmpEmail] = useState("");
   const [empSalary, setEmpSalary] = useState("");
   const [empDesignation, setEmpDesignation] = useState("");
-  const [empGender, setEmpGender] = useState("");
+  const [empGender, setEmpGender] = useState("Male");
   const [empDOB, setEmpDOB] = useState("");
   const [empJOI, setEmpJOI] = useState("");
 
@@ -28,6 +28,7 @@ const AddEmp = (props) => {
   }, []);
 
   const updateForm = (e) => {
+    e.preventDefault();
     fetch("http://localhost:3001/employees/" + props.updateId, {
       method: "PUT",
       headers: {
@@ -49,6 +50,9 @@ const AddEmp = (props) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        // props.setUpdateForm(false);
+        props.upDateData(data);
+        props.setUpdateForm(false);
       })
       .catch((err) => console.log(err));
   };
@@ -97,7 +101,6 @@ const AddEmp = (props) => {
             </div>
             <div className="gender-designation">
               <select
-                name="gender"
                 id="gender"
                 defaultValue={updateEmpData.gender}
                 onChange={(e) => setEmpGender(e.target.value)}
