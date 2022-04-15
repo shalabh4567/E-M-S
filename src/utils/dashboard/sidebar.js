@@ -1,9 +1,32 @@
-import React from "react";
+import React, {useContext} from "react";
+import { Link } from "react-router-dom";
 import styles from "./Dashboard.module.css";
+import { AdminContext } from "../../context/AdminContext";
 import logo from "../../DashboardImages/EyLogoD.png";
 import "./Dashboard.css";
 
 const Sidebar = () => {
+
+  const { state, dispatch } = useContext(AdminContext);
+
+  const logout = () => {
+    const admin = JSON.parse(localStorage.getItem("admin"));
+    fetch("http://localhost:4000/admins"+admin.id, {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        isLoggedIn: false
+      })
+    }).then(res => res.json())
+    .then(data => {
+      localStorage.removeItem("admin")
+
+    })
+    console.log(admin);
+  };
+
   return (
     <div className={`${styles.sidebar} hello`}>
       <div className={styles["side-logo"]}>
@@ -41,8 +64,8 @@ const Sidebar = () => {
             <span className={styles["link-name"]}>Setting</span>
           </a>
         </li>
-        <li>
-          <a href="#">
+        <li onClick={logout}>
+          <a>
             <i className={"bx bx-log-out"}></i>
             <span className={styles["link-name"]}>Log Out</span>
           </a>

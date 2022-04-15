@@ -35,8 +35,6 @@ const AddEmp = (props) => {
       empJOI
     );
 
-    
-
     fetch("http://localhost:3001/employees", {
       method: "POST",
       headers: {

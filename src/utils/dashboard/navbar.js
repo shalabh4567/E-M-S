@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styles from "./Dashboard.module.css";
+import Overlay from "react-bootstrap/Overlay";
 import logo from "../../DashboardImages/ProfileImg.jpg";
 // import "./Dashboard.css";
 
 function Nav() {
+  const [show, setShow] = useState(false);
+  const target = useRef(null);
+
   const cBtn = () => {
     let sidebar = document.querySelector(".hello");
     let sidebarBtn = document.querySelector(".sidebarBtn");
@@ -29,7 +33,26 @@ function Nav() {
         <div className={styles.rightnav}>
           <img src={logo} />
           <span className={styles.admin_name}>Admin</span>
-          <i className={"bx bx-chevron-down"}></i>
+          <i
+            className={"bx bx-chevron-down"}
+            ref={target}
+            onClick={() => setShow(!show)}
+          ></i>
+          <Overlay target={target.current} show={show} placement="right">
+            {({ placement, arrowProps, show: _show, popper, ...props }) => (
+              <div
+                style={{
+                  position: "absolute",
+                  backgroundColor: "rgba(255, 100, 100, 0.85)",
+                  padding: "2px 10px",
+                  color: "white",
+                  borderRadius: 3,
+                }}
+              >
+                Simple tooltip
+              </div>
+            )}
+          </Overlay>
         </div>
       </nav>
     </section>
