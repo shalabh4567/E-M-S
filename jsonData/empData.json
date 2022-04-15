@@ -21,6 +21,28 @@
       "dob": "2000-05-04",
       "joiningDate": "2021-06-05",
       "id": 3
+    },
+    {
+      "empId": "123456",
+      "empName": "Sayantan",
+      "gender": "Male",
+      "email": "sayantan@gmail.com",
+      "empSalary": "50,000",
+      "designation": "ASE",
+      "dob": "1993-04-13",
+      "joiningDate": "2022-04-05",
+      "id": 4
+    },
+    {
+      "empId": "123457",
+      "empName": "Saptarshi",
+      "gender": "Male",
+      "email": "saptarshi@gmail.com",
+      "empSalary": "60,000",
+      "designation": "Senior Analyst",
+      "dob": "1990-05-01",
+      "joiningDate": "2022-04-12",
+      "id": 5
     }
   ]
 }
