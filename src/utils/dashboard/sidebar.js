@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Dashboard.module.css";
 import logo from "../../DashboardImages/EyLogoD.png";
 import "./Dashboard.css";
-
+import { Link } from "react-router-dom";
 const Sidebar = () => {
   return (
     <div className={`${styles.sidebar} hello`}>
@@ -42,10 +42,10 @@ const Sidebar = () => {
           </a>
         </li>
         <li>
-          <a href="#">
-            <i className={"bx bx-log-out"}></i>
-            <span className={styles["link-name"]}>Log Out</span>
-          </a>
+        <Link to="/login" >
+                    <i className={'bx bx-log-out'}></i>
+                    <span className={styles['link-name']}>Log Out</span>
+                </Link>
         </li>
       </ul>
     </div>
