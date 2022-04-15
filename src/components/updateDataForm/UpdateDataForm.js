@@ -11,7 +11,7 @@ const AddEmp = (props) => {
   const [empEmail, setEmpEmail] = useState("");
   const [empSalary, setEmpSalary] = useState("");
   const [empDesignation, setEmpDesignation] = useState("");
-  const [empGender, setEmpGender] = useState("");
+  const [empGender, setEmpGender] = useState("Male");
   const [empDOB, setEmpDOB] = useState("");
   const [empJOI, setEmpJOI] = useState("");
 

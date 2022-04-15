@@ -21,17 +21,6 @@
       "dob": "2000-05-04",
       "joiningDate": "2021-06-05",
       "id": 3
-    },
-    {
-      "empId": "123458",
-      "empName": "Sayantan",
-      "gender": "Male",
-      "email": "sayantan@gmail.com",
-      "empSalary": "125858",
-      "designation": "SDE",
-      "dob": "2000-03-04",
-      "joiningDate": "2021-03-04",
-      "id": 4
     }
   ]
 }
