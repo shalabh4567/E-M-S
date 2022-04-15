@@ -4,7 +4,8 @@
       "name": "shalabh",
       "email": "shalabh@gmail.com",
       "password": "1234",
-      "id": 1
+      "id": 1,
+      "isLoggedIn": true
     },
     {
       "name": "shalab",

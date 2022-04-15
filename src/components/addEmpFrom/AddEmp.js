@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AddEmp.css";
 
@@ -13,14 +13,15 @@ const AddEmp = (props) => {
     props.setFormFalse(false);
   };
 
-  const [empName, setEmpName] = useState("");
-  const [empId, setEmpId] = useState("");
-  const [empEmail, setEmpEmail] = useState("");
-  const [empSalary, setEmpSalary] = useState("");
-  const [empDesignation, setEmpDesignation] = useState("");
-  const [empGender, setEmpGender] = useState("");
-  const [empDOB, setEmpDOB] = useState("");
-  const [empJOI, setEmpJOI] = useState("");
+
+  const [empName, setEmpName] = useState(null);
+  const [empId, setEmpId] = useState(null);
+  const [empEmail, setEmpEmail] = useState(null);
+  const [empSalary, setEmpSalary] = useState(null);
+  const [empDesignation, setEmpDesignation] = useState(null);
+  const [empGender, setEmpGender] = useState(null);
+  const [empDOB, setEmpDOB] = useState(null);
+  const [empJOI, setEmpJOI] = useState(null);
 
   const addEmpData = (e) => {
     e.preventDefault();
@@ -34,6 +35,10 @@ const AddEmp = (props) => {
       empDOB,
       empJOI
     );
+    if (empName && empId && empEmail && empSalary && empDesignation === "") {
+      alert("all fields are required");
+      return;
+    }
 
     fetch("http://localhost:3001/employees", {
       method: "POST",
@@ -58,6 +63,30 @@ const AddEmp = (props) => {
       })
       .catch((err) => console.log(err));
   };
+  
+  const [checkId, setcheckId] = useState(false);
+  const [checkMail, setcheckMail] = useState(false);
+
+  useEffect(() => {
+    setcheckId(false);
+    setcheckMail(false);
+   props.employee.map((em, index) => {
+        if(em.empId===empId){
+          setcheckId(true);
+        }
+
+        if(em.email===empEmail){
+          setcheckMail(true);
+        }
+  })
+  if(checkId){
+    alert("Employee Id already exist!");
+  }
+  if(checkMail)
+  {
+    alert("Employee Email already exist!");
+  }
+  }, [empId, empEmail, checkMail]);
 
   return (
     <>
