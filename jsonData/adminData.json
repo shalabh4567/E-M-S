@@ -17,7 +17,8 @@
       "name": "ajay",
       "email": "ajay@gmail.com",
       "password": "1234",
-      "id": 3
+      "id": 3,
+      "isLoggedIn": true
     },
     {
       "name": "Ipsita Roy",

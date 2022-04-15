@@ -43,6 +43,17 @@
       "dob": "1990-05-01",
       "joiningDate": "2022-04-12",
       "id": 5
+    },
+    {
+      "empId": "56",
+      "empName": "Mayank",
+      "gender": "Male",
+      "email": "mayank@gmail.com",
+      "empSalary": "26000",
+      "designation": "SDE",
+      "dob": "2022-04-01",
+      "joiningDate": "2022-04-30",
+      "id": 6
     }
   ]
 }
