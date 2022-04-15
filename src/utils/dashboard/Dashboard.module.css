@@ -32,6 +32,10 @@ body {
   width: 60px;
 }
 
+.sidebar.sidenav li {
+  cursor: pointer;
+}
+
 .sidebar .side-logo {
   height: 80px;
   width: 100%;
