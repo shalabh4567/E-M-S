@@ -10,27 +10,11 @@ const Sidebar = (props) => {
   const history = useNavigate();
 
   const { state, dispatch } = useContext(AdminContext);
-  
 
   const logout = () => {
-    const admin = JSON.parse(localStorage.getItem("admin"));
-    fetch("http://localhost:4000/admins/" + admin.id, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ...admin,
-        isLoggedIn: false,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        localStorage.removeItem("admin");
-        dispatch({ type: "ADMIN", payload: null });
-        history("/login");
-      });
-    console.log(admin);
+    localStorage.clear();
+    dispatch({ type: "ADMIN", payload: null });
+    history("/login");
   };
 
   return (
@@ -46,7 +30,7 @@ const Sidebar = (props) => {
             <span className={styles[`link-name`]}>Dashboard</span>
           </a>
         </li>
-        <li onClick={() => props.showForm(true) }>
+        <li onClick={() => props.showForm(true)}>
           <a href="#">
             <i className={"bx bxs-group"}></i>
             <span className={styles["link-name"]}>Add Employee</span>

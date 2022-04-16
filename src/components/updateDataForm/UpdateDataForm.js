@@ -6,6 +6,20 @@ const AddEmp = (props) => {
     props.setUpdateForm(false);
   };
 
+  const totalDesignation = [
+    "SDE I",
+    "SDE II",
+    "SDE III",
+    "Ass. Analyst I",
+    "Ass. Analyst II",
+    "Sr. Analyst",
+    "Ass. Manager",
+    "Sr. Manager",
+    "Backend Dev.",
+    "Forntend Dev",
+    "FullStack Dev",
+  ];
+
   const [empName, setEmpName] = useState("");
   const [empId, setEmpId] = useState("");
   const [empEmail, setEmpEmail] = useState("");
@@ -29,6 +43,23 @@ const AddEmp = (props) => {
 
   const updateForm = (e) => {
     e.preventDefault();
+
+    var val1 = new Date(empDOB ? empDOB : updateEmpData.dob);
+    var val2 = new Date(empJOI ? empJOI : updateEmpData.joiningDate);
+    var diff = val2.getTime() - val1.getTime();
+    if (Math.floor(diff / 31536000000) <= 18) {
+      alert("Employee is not 18 years or older!");
+      console.log("greater than 18");
+      return false;
+    }
+
+    var currDate = Date.now();
+    console.log(currDate);
+
+    if (val2 > currDate) {
+      alert("joining Date should not be greater than the curr Date");
+      return false;
+    }
     fetch("http://localhost:3001/employees/" + props.updateId, {
       method: "PUT",
       headers: {
@@ -110,13 +141,20 @@ const AddEmp = (props) => {
                 <option value="Others">Others</option>
               </select>
 
-              <input
-                type="text"
-                placeholder="Designation"
+              <select
+                name="Designation"
+                id="designation"
                 defaultValue={updateEmpData.designation}
-                required
-                onChange={(e) => setEmpDesignation(e.target.value)}
-              />
+                onChange={(e) => {
+                  setEmpDesignation(e.target.value);
+                }}
+              >
+                {totalDesignation.map((des, index) => (
+                  <option key={index} value={des}>
+                    {des}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="salary-dob">
               <input
@@ -133,7 +171,6 @@ const AddEmp = (props) => {
                 defaultValue={updateEmpData.dob}
                 required
                 onChange={(e) => setEmpDOB(e.target.value)}
-                style={{ pointerEvents: "none" }}
               />
             </div>
             <div className="joining-date">
@@ -144,7 +181,6 @@ const AddEmp = (props) => {
                 placeholder="joining date(dd/mm/yyyy)"
                 defaultValue={updateEmpData.joiningDate}
                 onChange={(e) => setEmpJOI(e.target.value)}
-                style={{ pointerEvents: "none" }}
               />
             </div>
 

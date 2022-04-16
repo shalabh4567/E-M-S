@@ -38,31 +38,42 @@ const AddEmp = (props) => {
 
   const addEmpData = (e) => {
     e.preventDefault();
-    console.log(
-      empName,
-      // empId,
-      empEmail,
-      empSalary,
-      empDesignation,
-      empGender,
-      empDOB,
-      empJOI
-    );
+    // console.log(
+    //   empName,
+    //   // empId,
+    //   empEmail,
+    //   empSalary,
+    //   empDesignation,
+    //   empGender,
+    //   empDOB,
+    //   empJOI
+    // );
 
-    var val1=new Date(empDOB);
-    var val2=new Date(empJOI);
-    var diff=val2.getTime()-val1.getTime();
-    if(Math.floor(diff/31536000000)<=18){
+    var val1 = new Date(empDOB);
+    var val2 = new Date(empJOI);
+    var diff = val2.getTime() - val1.getTime();
+    if (Math.floor(diff / 31536000000) <= 18) {
       alert("Employee is not 18 years or older!");
-      e.preventDefault();
       return false;
     }
 
-      var len=props.employee.length;
-      localStorage.setItem("latestEmpId","10000");
-      empId=parseInt(localStorage.getItem("latestEmpId"))+len+1;
-      localStorage.setItem("latestEmpId",empId);
-    
+    var currDate = Date.now();
+    console.log(currDate);
+
+    if (val2 > currDate) {
+      alert("joining Date should not be greater than the curr Date");
+      return false;
+    }
+
+    var len = props.employee.length;
+
+    if (len > 1) {
+      empId = parseInt(props.employee[len - 1].empId) + 1;
+    } else {
+      localStorage.setItem("latestEmpId", "10000");
+      empId = parseInt(localStorage.getItem("latestEmpId")) + len + 1;
+      localStorage.setItem("latestEmpId", empId);
+    }
 
     fetch("http://localhost:3001/employees", {
       method: "POST",
@@ -80,12 +91,6 @@ const AddEmp = (props) => {
         joiningDate: empJOI,
       }),
     })
-    // .then(() => {
-    //   var len=Object.keys(props.employee).length;
-    //   localStorage.setItem("latestEmpId","10000");
-    //   let emId=parseInt(localStorage.getItem("latestEmpId"))+len+1;
-    //   localStorage.setItem("latestEmpId",emId);
-    // })
       .then((res) => res.json())
       .then((data) => {
         props.setFormFalse(false);
@@ -93,8 +98,6 @@ const AddEmp = (props) => {
       })
       .catch((err) => console.log(err));
   };
-
-
 
   return (
     <>
@@ -139,10 +142,8 @@ const AddEmp = (props) => {
             <select
               name="gender"
               id="gender"
-              value={empGender}
               onChange={(e) => {
-                console.log(e.target.value);
-                setEmpDesignation(e.target.value);
+                setEmpGender(e.target.value);
               }}
             >
               <option value="Male">Male</option>
@@ -152,14 +153,14 @@ const AddEmp = (props) => {
             <select
               name="Designation"
               id="designation"
-              value={empDesignation}
               onChange={(e) => {
-                console.log(e.target.value);
-                setEmpGender(e.target.value);
+                setEmpDesignation(e.target.value);
               }}
             >
               {totalDesignation.map((des, index) => (
-                <option key={index} value={des}>{des}</option>
+                <option key={index} value={des}>
+                  {des}
+                </option>
               ))}
             </select>
           </div>

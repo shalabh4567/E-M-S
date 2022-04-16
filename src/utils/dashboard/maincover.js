@@ -4,7 +4,6 @@ import styles from "./Dashboard.module.css";
 import "./Dashboard.css";
 
 function Main(props) {
-
   const totalDesignation = [
     "SDE I",
     "SDE II",
@@ -29,7 +28,9 @@ function Main(props) {
           <div className={styles.boxes}>
             <div className={styles.leftBox}>
               <div className={styles.boxValue}>Total Employee</div>
-              <div className={styles.numbers}>{props.employee && props.employee.length}</div>
+              <div className={styles.numbers}>
+                {props.employee && props.employee.length}
+              </div>
             </div>
             <i className={`bx bxs-group ${styles.cart}`}></i>
           </div>
@@ -49,9 +50,7 @@ function Main(props) {
               <div className={styles.boxValue}>Total Emp Present</div>
               <div className={styles.numbers}>{empPresent}</div>
             </div>
-            <i
-              className={`bx bx-body ${styles.cart} ${styles.third}`}
-            ></i>
+            <i className={`bx bx-body ${styles.cart} ${styles.third}`}></i>
           </div>
 
           <div className={styles.boxes}>
@@ -83,23 +82,24 @@ function Main(props) {
               </tr>
             </thead>
             <tbody>
-              {props.employee && props.employee.map((emp, index) => {
-                if(index > 4){
-                  return;
-                }
-                return (
-                  <tr key={index}>
-                    <th scope="row">{emp.empId}</th>
-                    <td>{emp.empName}</td>
-                    <td>{emp.gender}</td>
-                    <td>{emp.designation}</td>
-                    <td>{emp.empSalary}</td>
-                    <td>{emp.email}</td>
-                    <td>{emp.dob}</td>
-                    <td>{emp.joiningDate}</td>
-                  </tr>
-                );
-              })}
+              {props.employee &&
+                props.employee.map((emp, index) => {
+                  if (index > 4) {
+                    return;
+                  }
+                  return (
+                    <tr key={index}>
+                      <th scope="row">{emp.empId}</th>
+                      <td>{emp.empName}</td>
+                      <td>{emp.gender}</td>
+                      <td>{emp.designation}</td>
+                      <td>{emp.empSalary}</td>
+                      <td>{emp.email}</td>
+                      <td>{emp.dob}</td>
+                      <td>{emp.joiningDate}</td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
           <div className={styles.button}>
