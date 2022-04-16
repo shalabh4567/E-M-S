@@ -1,11 +1,20 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AdminContext } from "../../context/AdminContext";
 import Toast from "react-bootstrap/Toast";
 import ToastContainer from "react-bootstrap/Toast";
 import LeftSide from "../../utils/loginSignupLeftSide/LeftSide";
 import "./Login.css";
 
 const Login = () => {
+  const { state, dispatch } = useContext(AdminContext);
+
+  useEffect(() => {
+    if (state) {
+      history("/");
+    }
+  }, []);
+
   const history = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -51,8 +60,11 @@ const Login = () => {
             console.log(data);
             if (data.isLoggedIn === true) {
               setShow(true);
-              sleep(2000).then(() => history("/dashboard"))
-              
+              sleep(1500).then(() => {
+                localStorage.setItem("admin", JSON.stringify(data));
+                dispatch({ type: "ADMIN", payload: data });
+                history("/dashboard");
+              });
             }
           })
           .catch((err) => {
@@ -79,7 +91,9 @@ const Login = () => {
       >
         <Toast.Header closeButton={false}>
           <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-          <strong className="me-auto" style={{color: "black"}}>Logged In succesfully</strong>
+          <strong className="me-auto" style={{ color: "black" }}>
+            Logged In succesfully
+          </strong>
         </Toast.Header>
       </Toast>
 

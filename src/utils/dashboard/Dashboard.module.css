@@ -32,6 +32,10 @@ body {
   width: 60px;
 }
 
+.sidebar.sidenav li {
+  cursor: pointer;
+}
+
 .sidebar .side-logo {
   height: 80px;
   width: 100%;
@@ -186,6 +190,7 @@ nav .searchbar i {
   border-radius: 6px;
   align-items: center;
   padding: 0 2px;
+  
 }
 
 nav .rightnav img {

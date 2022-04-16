@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Dashboard.module.css";
+import { AdminContext } from "../../context/AdminContext";
 import logo from "../../DashboardImages/EyLogoD.png";
 import "./Dashboard.css";
-import { Link } from "react-router-dom";
+
 const Sidebar = () => {
+  const history = useNavigate();
+
+  const { state, dispatch } = useContext(AdminContext);
+
+  const logout = () => {
+    const admin = JSON.parse(localStorage.getItem("admin"));
+    fetch("http://localhost:4000/admins/" + admin.id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...admin,
+        isLoggedIn: false,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        localStorage.removeItem("admin");
+        dispatch({ type: "ADMIN", payload: null });
+        history("/login");
+      });
+    console.log(admin);
+  };
+
   return (
     <div className={`${styles.sidebar} hello`}>
       <div className={styles["side-logo"]}>
@@ -41,11 +68,11 @@ const Sidebar = () => {
             <span className={styles["link-name"]}>Setting</span>
           </a>
         </li>
-        <li>
-        <Link to="/login" >
-                    <i className={'bx bx-log-out'}></i>
-                    <span className={styles['link-name']}>Log Out</span>
-                </Link>
+        <li onClick={logout}>
+          <Link to="/login">
+            <i className={"bx bx-log-out"}></i>
+            <span className={styles["link-name"]}>Log Out</span>
+          </Link>
         </li>
       </ul>
     </div>

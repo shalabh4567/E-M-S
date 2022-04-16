@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Toast from "react-bootstrap/Toast";
 import LeftSide from "../../utils/loginSignupLeftSide/LeftSide";
 import "./Signup.css";
 
@@ -9,6 +10,7 @@ const Signup = () => {
   const [fname, setFname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [show, setShow] = useState(false);
 
   const fnameError = useRef(null);
   const emailError = useRef(null);
@@ -21,6 +23,10 @@ const Signup = () => {
       alert("all fields are required");
       return;
     }
+
+    const sleep = (ms) => {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    };
 
     fetch("http://localhost:4000/admins")
       .then((res) => res.json())
@@ -46,14 +52,34 @@ const Signup = () => {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            alert("you are now an admin");
-            history("/login");
+            setShow(true);
+            sleep(1500).then(() => history("/login"));
           });
       });
   };
 
   return (
     <div className="signup-container">
+      <Toast
+        position="top-end"
+        style={{
+          position: "absolute",
+          right: "10px",
+          top: "10px",
+          background: "yellow",
+        }}
+        show={show}
+        onClose={() => setShow(false)}
+        delay={1000}
+        autohide
+      >
+        <Toast.Header closeButton={false}>
+          <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
+          <strong className="me-auto" style={{ color: "black" }}>
+            Signed In Succesfully
+          </strong>
+        </Toast.Header>
+      </Toast>
       <LeftSide />
       <div className="right-view">
         <div className="right-view-inner">
