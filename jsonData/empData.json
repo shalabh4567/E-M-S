@@ -56,6 +56,7 @@
       "id": 6
     },
     {
+<<<<<<< Updated upstream
       "empId": "123458",
       "empName": "Rahul",
       "gender": "Male",
@@ -64,6 +65,15 @@
       "designation": "SDE11",
       "dob": "2000-05-04",
       "joiningDate": "2021-05-04",
+=======
+      "empName": "qwerty",
+      "gender": "Male",
+      "email": "qwerty@gmail.com",
+      "empSalary": "1223",
+      "designation": "SDE",
+      "dob": "2022-04-19",
+      "joiningDate": "2022-05-01",
+>>>>>>> Stashed changes
       "id": 7
     },
     {

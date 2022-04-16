@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AddEmp.css";
 
@@ -28,7 +28,7 @@ const AddEmp = (props) => {
   };
 
   const [empName, setEmpName] = useState("");
-  const [empId, setEmpId] = useState("");
+  // const [empId, setEmpId] = useState("");
   const [empEmail, setEmpEmail] = useState("");
   const [empSalary, setEmpSalary] = useState("");
   const [empDesignation, setEmpDesignation] = useState("SDE I");
@@ -40,7 +40,7 @@ const AddEmp = (props) => {
     e.preventDefault();
     console.log(
       empName,
-      empId,
+      // empId,
       empEmail,
       empSalary,
       empDesignation,
@@ -55,7 +55,7 @@ const AddEmp = (props) => {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        empId: empId,
+        // empId: empId,
         empName: empName,
         gender: empGender,
         email: empEmail,
@@ -65,6 +65,12 @@ const AddEmp = (props) => {
         joiningDate: empJOI,
       }),
     })
+    .then(() => {
+      var len=Object.keys(props.employee).length;
+      localStorage.setItem("latestEmpId","10000");
+      let emId=parseInt(localStorage.getItem("latestEmpId"))+len+1;
+      localStorage.setItem("latestEmpId",emId);
+    })
       .then((res) => res.json())
       .then((data) => {
         props.setFormFalse(false);
@@ -72,6 +78,8 @@ const AddEmp = (props) => {
       })
       .catch((err) => console.log(err));
   };
+
+
 
   return (
     <>
@@ -94,7 +102,7 @@ const AddEmp = (props) => {
               onChange={(e) => setEmpName(e.target.value)}
             />
           </div>
-          <div className="empId">
+          {/* <div className="empId">
             <input
               type="text"
               placeholder="Employee Id"
@@ -102,7 +110,7 @@ const AddEmp = (props) => {
               required
               onChange={(e) => setEmpId(e.target.value)}
             />
-          </div>
+          </div> */}
           <div className="empEmail">
             <input
               type="text"
