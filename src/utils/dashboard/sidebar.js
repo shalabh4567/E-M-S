@@ -1,14 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Dashboard.module.css";
 import { AdminContext } from "../../context/AdminContext";
+import AddEmp from "../../components/addEmpFrom/AddEmp";
 import logo from "../../DashboardImages/EyLogoD.png";
 import "./Dashboard.css";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   const history = useNavigate();
 
   const { state, dispatch } = useContext(AdminContext);
+  
 
   const logout = () => {
     const admin = JSON.parse(localStorage.getItem("admin"));
@@ -43,6 +45,18 @@ const Sidebar = () => {
             <i className={"bx bx-grid-alt"}></i>
             <span className={styles[`link-name`]}>Dashboard</span>
           </a>
+        </li>
+        <li onClick={() => props.showForm(true) }>
+          <a href="#">
+            <i className={"bx bxs-group"}></i>
+            <span className={styles["link-name"]}>Add Employee</span>
+          </a>
+        </li>
+        <li>
+          <Link to="/empdata">
+            <i className={"bx bx-desktop"}></i>
+            <span className={styles["link-name"]}>Display All</span>
+          </Link>
         </li>
         <li>
           <a href="#">

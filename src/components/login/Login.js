@@ -61,6 +61,7 @@ const Login = () => {
             if (data.isLoggedIn === true) {
               setShow(true);
               sleep(1500).then(() => {
+                data.password = undefined
                 localStorage.setItem("admin", JSON.stringify(data));
                 dispatch({ type: "ADMIN", payload: data });
                 history("/dashboard");

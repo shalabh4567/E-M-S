@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AddEmp.css";
 
@@ -7,6 +7,20 @@ const AddEmp = (props) => {
 
   const history = useNavigate();
 
+  const totalDesignation = [
+    "SDE I",
+    "SDE II",
+    "SDE III",
+    "Ass. Analyst I",
+    "Ass. Analyst II",
+    "Sr. Analyst",
+    "Ass. Manager",
+    "Sr. Manager",
+    "Backend Dev.",
+    "Forntend Dev",
+    "FullStack Dev",
+  ];
+
   //console.log(props.employee)
 
   const closeForm = () => {
@@ -14,10 +28,10 @@ const AddEmp = (props) => {
   };
 
   const [empName, setEmpName] = useState("");
-  const [empId, setEmpId] = useState("");
+  let [empId, setEmpId] = useState("");
   const [empEmail, setEmpEmail] = useState("");
   const [empSalary, setEmpSalary] = useState("");
-  const [empDesignation, setEmpDesignation] = useState("");
+  const [empDesignation, setEmpDesignation] = useState("SDE I");
   const [empGender, setEmpGender] = useState("Male");
   const [empDOB, setEmpDOB] = useState("");
   const [empJOI, setEmpJOI] = useState("");
@@ -26,7 +40,7 @@ const AddEmp = (props) => {
     e.preventDefault();
     console.log(
       empName,
-      empId,
+      // empId,
       empEmail,
       empSalary,
       empDesignation,
@@ -34,6 +48,21 @@ const AddEmp = (props) => {
       empDOB,
       empJOI
     );
+
+    var val1=new Date(empDOB);
+    var val2=new Date(empJOI);
+    var diff=val2.getTime()-val1.getTime();
+    if(Math.floor(diff/31536000000)<=18){
+      alert("Employee is not 18 years or older!");
+      e.preventDefault();
+      return false;
+    }
+
+      var len=props.employee.length;
+      localStorage.setItem("latestEmpId","10000");
+      empId=parseInt(localStorage.getItem("latestEmpId"))+len+1;
+      localStorage.setItem("latestEmpId",empId);
+    
 
     fetch("http://localhost:3001/employees", {
       method: "POST",
@@ -51,6 +80,12 @@ const AddEmp = (props) => {
         joiningDate: empJOI,
       }),
     })
+    // .then(() => {
+    //   var len=Object.keys(props.employee).length;
+    //   localStorage.setItem("latestEmpId","10000");
+    //   let emId=parseInt(localStorage.getItem("latestEmpId"))+len+1;
+    //   localStorage.setItem("latestEmpId",emId);
+    // })
       .then((res) => res.json())
       .then((data) => {
         props.setFormFalse(false);
@@ -58,6 +93,8 @@ const AddEmp = (props) => {
       })
       .catch((err) => console.log(err));
   };
+
+
 
   return (
     <>
@@ -80,7 +117,7 @@ const AddEmp = (props) => {
               onChange={(e) => setEmpName(e.target.value)}
             />
           </div>
-          <div className="empId">
+          {/* <div className="empId">
             <input
               type="text"
               placeholder="Employee Id"
@@ -88,7 +125,7 @@ const AddEmp = (props) => {
               required
               onChange={(e) => setEmpId(e.target.value)}
             />
-          </div>
+          </div> */}
           <div className="empEmail">
             <input
               type="text"
@@ -105,20 +142,26 @@ const AddEmp = (props) => {
               value={empGender}
               onChange={(e) => {
                 console.log(e.target.value);
-                setEmpGender(e.target.value);
+                setEmpDesignation(e.target.value);
               }}
             >
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Others">Others</option>
             </select>
-            <input
-              type="text"
-              placeholder="Designation"
+            <select
+              name="Designation"
+              id="designation"
               value={empDesignation}
-              required
-              onChange={(e) => setEmpDesignation(e.target.value)}
-            />
+              onChange={(e) => {
+                console.log(e.target.value);
+                setEmpGender(e.target.value);
+              }}
+            >
+              {totalDesignation.map((des, index) => (
+                <option key={index} value={des}>{des}</option>
+              ))}
+            </select>
           </div>
           <div className="salary-dob">
             <input
