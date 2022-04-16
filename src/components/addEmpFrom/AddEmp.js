@@ -163,7 +163,7 @@ const AddEmp = (props) => {
           </div>
           <div className="salary-dob">
             <input
-              type="text"
+              type="number"
               placeholder="Salary"
               value={empSalary}
               required
