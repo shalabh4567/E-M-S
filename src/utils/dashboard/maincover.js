@@ -66,10 +66,9 @@ function Main() {
   </thead>
   <tbody>
     <tr>
-      <th scope="row">	56</th>
+      <th scope="row">56</th>
       <td>Mayank</td>
       <td>Male</td>
-      <td>@mdo</td>
       <td>SDE</td>
       <td>26000</td>
       <td>mayank@gmail.com</td>
