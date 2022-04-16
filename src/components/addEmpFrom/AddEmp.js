@@ -49,6 +49,15 @@ const AddEmp = (props) => {
       empJOI
     );
 
+    var val1=new Date(empDOB);
+    var val2=new Date(empJOI);
+    var diff=val2.getTime()-val1.getTime();
+    if(Math.floor(diff/31536000000)<=18){
+      alert("Employee is not 18 years or older!");
+      e.preventDefault();
+      return false;
+    }
+
     fetch("http://localhost:3001/employees", {
       method: "POST",
       headers: {
