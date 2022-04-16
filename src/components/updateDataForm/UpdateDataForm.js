@@ -133,6 +133,7 @@ const AddEmp = (props) => {
                 defaultValue={updateEmpData.dob}
                 required
                 onChange={(e) => setEmpDOB(e.target.value)}
+                style={{ pointerEvents: "none" }}
               />
             </div>
             <div className="joining-date">
@@ -143,6 +144,7 @@ const AddEmp = (props) => {
                 placeholder="joining date(dd/mm/yyyy)"
                 defaultValue={updateEmpData.joiningDate}
                 onChange={(e) => setEmpJOI(e.target.value)}
+                style={{ pointerEvents: "none" }}
               />
             </div>
 
