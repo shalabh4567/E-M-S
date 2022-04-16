@@ -21,8 +21,6 @@ const AddEmp = (props) => {
     "FullStack Dev",
   ];
 
-  //console.log(props.employee)
-
   const closeForm = () => {
     props.setFormFalse(false);
   };
@@ -166,7 +164,7 @@ const AddEmp = (props) => {
           </div>
           <div className="salary-dob">
             <input
-              type="text"
+              type="number"
               placeholder="Salary"
               value={empSalary}
               required
