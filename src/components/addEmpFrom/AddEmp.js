@@ -21,8 +21,6 @@ const AddEmp = (props) => {
     "FullStack Dev",
   ];
 
-  //console.log(props.employee)
-
   const closeForm = () => {
     props.setFormFalse(false);
   };
