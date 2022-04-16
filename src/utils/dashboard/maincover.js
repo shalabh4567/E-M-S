@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Dashboard.module.css";
+import "./Dashboard.css";
 
 function Main() {
   return (
@@ -50,115 +51,33 @@ function Main() {
       <div className={styles.empbox}>
         <div className={`${styles.empvalue} ${styles.box}`}>
           <div className={styles.title}>Employee Details</div>
-          <div className={styles["emp-details"]}>
-            <ul className={styles.details}>
-              <li className={styles.heading}>Emp Name</li>
-              <li className={styles.value}>Abhishek</li>
-              <li className={styles.value}>Abhishek</li>
-              <li className={styles.value}>Abhishek</li>
-              <li className={styles.value}>Abhishek</li>
-              <li className={styles.value}>Abhishek</li>
-              <li className={styles.value}>Abhishek</li>
-              <li className={styles.value}>Abhishek</li>
-              <li className={styles.value}>Abhishek</li>
-            </ul>
-
-            <ul className={styles.details}>
-              <li className={styles.heading}>Emp Id</li>
-              <li className={styles.value}>123456</li>
-              <li className={styles.value}>123456</li>
-              <li className={styles.value}>123456</li>
-              <li className={styles.value}>123456</li>
-              <li className={styles.value}>123456</li>
-              <li className={styles.value}>123456</li>
-              <li className={styles.value}>123456</li>
-              <li className={styles.value}>123456</li>
-            </ul>
-
-            <ul className={styles.details}>
-              <li className={styles.heading}>Gender</li>
-              <li className={styles.value}>Male</li>
-              <li className={styles.value}>Male</li>
-              <li className={styles.value}>Male</li>
-              <li className={styles.value}>Male</li>
-              <li className={styles.value}>Male</li>
-              <li className={styles.value}>Male</li>
-              <li className={styles.value}>Male</li>
-              <li className={styles.value}>Male</li>
-            </ul>
-
-            <ul className={styles.details}>
-              <li className={styles.heading}>Designation</li>
-              <li className={styles.value}>Engineer</li>
-              <li className={styles.value}>Engineer</li>
-              <li className={styles.value}>Engineer</li>
-              <li className={styles.value}>Engineer</li>
-              <li className={styles.value}>Engineer</li>
-              <li className={styles.value}>Engineer</li>
-              <li className={styles.value}>Engineer</li>
-              <li className={styles.value}>Engineer</li>
-            </ul>
-
-            <ul className={styles.details}>
-              <li className={styles.heading}>Salary</li>
-              <li className={styles.value}>6,00,000</li>
-              <li className={styles.value}>6,00,000</li>
-              <li className={styles.value}>6,00,000</li>
-              <li className={styles.value}>6,00,000</li>
-              <li className={styles.value}>6,00,000</li>
-              <li className={styles.value}>6,00,000</li>
-              <li className={styles.value}>6,00,000</li>
-              <li className={styles.value}>6,00,000</li>
-            </ul>
-
-            <ul className={styles.details}>
-              <li className={styles.heading}>Email</li>
-              <li className={styles.value}>xyz@gmail.com</li>
-              <li className={styles.value}>xyz@gmail.com</li>
-              <li className={styles.value}>xyz@gmail.com</li>
-              <li className={styles.value}>xyz@gmail.com</li>
-              <li className={styles.value}>xyz@gmail.com</li>
-              <li className={styles.value}>xyz@gmail.com</li>
-              <li className={styles.value}>xyz@gmail.com</li>
-              <li className={styles.value}>xyz@gmail.com</li>
-            </ul>
-
-            <ul className={styles.details}>
-              <li className={styles.heading}>DOB</li>
-              <li className={styles.value}>9 Jan 2000</li>
-              <li className={styles.value}>9 Jan 2000</li>
-              <li className={styles.value}>9 Jan 2000</li>
-              <li className={styles.value}>9 Jan 2000</li>
-              <li className={styles.value}>9 Jan 2000</li>
-              <li className={styles.value}>9 Jan 2000</li>
-              <li className={styles.value}>9 Jan 2000</li>
-              <li className={styles.value}>9 Jan 2000</li>
-            </ul>
-
-            <ul className={styles.details}>
-              <li className={styles.heading}>Joining Date</li>
-              <li className={styles.value}>16 May 2022</li>
-              <li className={styles.value}>16 May 2022</li>
-              <li className={styles.value}>16 May 2022</li>
-              <li className={styles.value}>16 May 2022</li>
-              <li className={styles.value}>16 May 2022</li>
-              <li className={styles.value}>16 May 2022</li>
-              <li className={styles.value}>16 May 2022</li>
-              <li className={styles.value}>16 May 2022</li>
-            </ul>
-
-            <ul className={styles.details}>
-              <li className={styles.heading}>Address</li>
-              <li className={styles.value}>Jamshedpur</li>
-              <li className={styles.value}>Jamshedpur</li>
-              <li className={styles.value}>Jamshedpur</li>
-              <li className={styles.value}>Jamshedpur</li>
-              <li className={styles.value}>Jamshedpur</li>
-              <li className={styles.value}>Jamshedpur</li>
-              <li className={styles.value}>Jamshedpur</li>
-              <li className={styles.value}>Jamshedpur</li>
-            </ul>
-          </div>
+          <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Emp Id</th>
+      <th scope="col">Emp Name</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Designation</th>
+      <th scope="col">Salary</th>
+      <th scope="col">Email</th>
+      <th scope="col">DOB</th>
+      <th scope="col">Joining date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">	56</th>
+      <td>Mayank</td>
+      <td>Male</td>
+      <td>@mdo</td>
+      <td>SDE</td>
+      <td>26000</td>
+      <td>mayank@gmail.com</td>
+      <td>2022-04-01</td>
+      <td>2022-04-30</td>
+    </tr>
+  </tbody>
+</table>
           <div className={styles.button}>
             <Link to="/empdata">See All</Link>
           </div>
