@@ -28,7 +28,7 @@ const AddEmp = (props) => {
   };
 
   const [empName, setEmpName] = useState("");
-  // const [empId, setEmpId] = useState("");
+  let [empId, setEmpId] = useState("");
   const [empEmail, setEmpEmail] = useState("");
   const [empSalary, setEmpSalary] = useState("");
   const [empDesignation, setEmpDesignation] = useState("SDE I");
@@ -58,13 +58,19 @@ const AddEmp = (props) => {
       return false;
     }
 
+      var len=props.employee.length;
+      localStorage.setItem("latestEmpId","10000");
+      empId=parseInt(localStorage.getItem("latestEmpId"))+len+1;
+      localStorage.setItem("latestEmpId",empId);
+    
+
     fetch("http://localhost:3001/employees", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        // empId: empId,
+        empId: empId,
         empName: empName,
         gender: empGender,
         email: empEmail,
@@ -74,12 +80,12 @@ const AddEmp = (props) => {
         joiningDate: empJOI,
       }),
     })
-    .then(() => {
-      var len=Object.keys(props.employee).length;
-      localStorage.setItem("latestEmpId","10000");
-      let emId=parseInt(localStorage.getItem("latestEmpId"))+len+1;
-      localStorage.setItem("latestEmpId",emId);
-    })
+    // .then(() => {
+    //   var len=Object.keys(props.employee).length;
+    //   localStorage.setItem("latestEmpId","10000");
+    //   let emId=parseInt(localStorage.getItem("latestEmpId"))+len+1;
+    //   localStorage.setItem("latestEmpId",emId);
+    // })
       .then((res) => res.json())
       .then((data) => {
         props.setFormFalse(false);
