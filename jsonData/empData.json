@@ -54,16 +54,6 @@
       "dob": "2022-04-01",
       "joiningDate": "2022-04-30",
       "id": 6
-    },
-    {
-      "empId": 13,
-      "empName": "Avinash",
-      "email": "avi@gmail.com",
-      "empSalary": "26000",
-      "designation": "SDE",
-      "dob": "2022-04-07",
-      "joiningDate": "2022-04-16",
-      "id": 7
     }
   ]
 }
