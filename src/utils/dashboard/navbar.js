@@ -1,10 +1,14 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
+import {AdminContext} from "../../context/AdminContext"
 import styles from "./Dashboard.module.css";
 import Overlay from "react-bootstrap/Overlay";
 import logo from "../../DashboardImages/ProfileImg.jpg";
+
 // import "./Dashboard.css";
 
 function Nav() {
+  const { state, dispatch } = useContext(AdminContext);
+
   const [show, setShow] = useState(false);
   const target = useRef(null);
 
@@ -32,7 +36,7 @@ function Nav() {
         </div>
         <div className={styles.rightnav}>
           <img src={logo} />
-          <span className={styles.admin_name}>Admin</span>
+          <span className={styles.admin_name}>{state.name}</span>
           <i
             className={"bx bx-chevron-down"}
             ref={target}

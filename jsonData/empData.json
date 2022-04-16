@@ -54,6 +54,28 @@
       "dob": "2022-04-01",
       "joiningDate": "2022-04-30",
       "id": 6
+    },
+    {
+      "empId": "123458",
+      "empName": "Rahul",
+      "gender": "Male",
+      "email": "rahul@gmail.com",
+      "empSalary": "125858",
+      "designation": "SDE11",
+      "dob": "2000-05-04",
+      "joiningDate": "2021-05-04",
+      "id": 7
+    },
+    {
+      "empId": "125848",
+      "empName": "Ajim",
+      "gender": "Male",
+      "email": "ajim@gmail.com",
+      "empSalary": "125858",
+      "designation": "SDE I",
+      "dob": "2000-05-04",
+      "joiningDate": "2021-04-05",
+      "id": 8
     }
   ]
 }

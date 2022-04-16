@@ -7,6 +7,20 @@ const AddEmp = (props) => {
 
   const history = useNavigate();
 
+  const totalDesignation = [
+    "SDE I",
+    "SDE II",
+    "SDE III",
+    "Ass. Analyst I",
+    "Ass. Analyst II",
+    "Sr. Analyst",
+    "Ass. Manager",
+    "Sr. Manager",
+    "Backend Dev.",
+    "Forntend Dev",
+    "FullStack Dev",
+  ];
+
   //console.log(props.employee)
 
   const closeForm = () => {
@@ -17,7 +31,7 @@ const AddEmp = (props) => {
   const [empId, setEmpId] = useState("");
   const [empEmail, setEmpEmail] = useState("");
   const [empSalary, setEmpSalary] = useState("");
-  const [empDesignation, setEmpDesignation] = useState("");
+  const [empDesignation, setEmpDesignation] = useState("SDE I");
   const [empGender, setEmpGender] = useState("Male");
   const [empDOB, setEmpDOB] = useState("");
   const [empJOI, setEmpJOI] = useState("");
@@ -105,20 +119,26 @@ const AddEmp = (props) => {
               value={empGender}
               onChange={(e) => {
                 console.log(e.target.value);
-                setEmpGender(e.target.value);
+                setEmpDesignation(e.target.value);
               }}
             >
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Others">Others</option>
             </select>
-            <input
-              type="text"
-              placeholder="Designation"
+            <select
+              name="Designation"
+              id="designation"
               value={empDesignation}
-              required
-              onChange={(e) => setEmpDesignation(e.target.value)}
-            />
+              onChange={(e) => {
+                console.log(e.target.value);
+                setEmpGender(e.target.value);
+              }}
+            >
+              {totalDesignation.map((des, index) => (
+                <option key={index} value={des}>{des}</option>
+              ))}
+            </select>
           </div>
           <div className="salary-dob">
             <input
