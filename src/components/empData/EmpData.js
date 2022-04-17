@@ -19,6 +19,7 @@ const EmpData = () => {
   const [deleteIndex, setDeleteIndex] = useState(null);
 
   const [checkedAll, setCheckedAll] = useState(false);
+  const [searchEmp, setSearchEmp] = useState("");
 
   const checkAllEmp = useRef(null);
 
@@ -115,6 +116,7 @@ const EmpData = () => {
             type="text"
             className="serch-emp"
             placeholder="search by Emp Id"
+            onChange={(e) => setSearchEmp(e.target.value)}
           />
         </div>
         <div className="table-heading" style={{ overflowX: "auto" }}>
@@ -259,8 +261,7 @@ const EmpData = () => {
                                 </span>
                                 <br />
                                 <span>
-                                  Designation :
-                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                                  Designation : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
                                   {emp.designation}
                                 </span>
                                 <br />
@@ -270,8 +271,7 @@ const EmpData = () => {
                                 </span>
                                 <br />
                                 <span>
-                                  DOB : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-                                  {emp.dob}
+                                  DOB : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {emp.dob}
                                 </span>
                                 <br />
                                 <span>

@@ -56,17 +56,6 @@
       "id": 7
     },
     {
-      "empId": 10008,
-      "empName": "Ajay",
-      "gender": "Male",
-      "email": "ajay@gmail.com",
-      "empSalary": "2525214",
-      "designation": "Ass. Analyst II",
-      "dob": "2000-05-04",
-      "joiningDate": "2022-03-05",
-      "id": 8
-    },
-    {
       "empId": 10009,
       "empName": "Ritesh",
       "gender": "Male",
@@ -76,6 +65,28 @@
       "dob": "1999-05-04",
       "joiningDate": "2020-05-04",
       "id": 9
+    },
+    {
+      "empId": 10010,
+      "empName": "Sanajy",
+      "gender": "Male",
+      "email": "sanjay@gmail.com",
+      "empSalary": "1252825",
+      "designation": "Ass. Analyst I",
+      "dob": "2000-06-04",
+      "joiningDate": "2021-08-05",
+      "id": 10
+    },
+    {
+      "empId": 10012,
+      "empName": "Shikhar",
+      "gender": "Male",
+      "email": "sritam@gmail.com",
+      "empSalary": "125242",
+      "designation": "Sr. Analyst",
+      "dob": "2000-02-05",
+      "joiningDate": "2021-05-05",
+      "id": 12
     }
   ]
 }

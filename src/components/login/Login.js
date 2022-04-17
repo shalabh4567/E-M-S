@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AdminContext } from "../../context/AdminContext";
-import Toast from "react-bootstrap/Toast";
+import { sleep } from "../../utils/sleepPropmise";
 import LeftSide from "../../utils/loginSignupLeftSide/LeftSide";
+import ToastMessage from "../toastMessage/ToastMessage";
 import "./Login.css";
 
 const Login = () => {
@@ -18,7 +19,9 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [show, setShow] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
+  const [err, setErr] = useState(null);
 
   const emailError = useRef(null);
   const passwordError = useRef(null);
@@ -31,10 +34,6 @@ const Login = () => {
       return;
     }
 
-    const sleep = (ms) => {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    };
-
     fetch("http://localhost:4000/admins")
       .then((res) => res.json())
       .then((data) => {
@@ -46,39 +45,27 @@ const Login = () => {
           return;
         }
         console.log(isAdmin.id);
-        setShow(true);
+        setShowToast(true);
         sleep(1500).then(() => {
           isAdmin.password = undefined;
           localStorage.setItem("admin", JSON.stringify(isAdmin));
           dispatch({ type: "ADMIN", payload: isAdmin });
           history("/dashboard");
         });
+      })
+      .catch((err) => {
+        setErr("Server error");
+        setShowToast(true)
       });
   };
 
   return (
     <div className="signup-container">
-      <Toast
-        position="top-end"
-        style={{
-          position: "absolute",
-          right: "10px",
-          top: "10px",
-          background: "yellow",
-        }}
-        show={show}
-        onClose={() => setShow(false)}
-        delay={1000}
-        autohide
-      >
-        <Toast.Header closeButton={false}>
-          <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-          <strong className="me-auto" style={{ color: "black" }}>
-            Logged In succesfully
-          </strong>
-        </Toast.Header>
-      </Toast>
-
+      <ToastMessage
+        showToast={showToast}
+        setShowToast={setShowToast}
+        message={err ? err : "Logged In Succesfully"}
+      />
       <LeftSide />
       <div className="right-view">
         <div className="right-view-inner">
