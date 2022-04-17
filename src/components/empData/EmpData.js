@@ -230,7 +230,7 @@ const EmpData = () => {
                                   id="exampleModalLabel"
                                   style={{ color: "black" }}
                                 >
-                                  {emp.empId + "Emplyoee"}
+                                  {emp.empName + " Details"}
                                 </h5>
                                 <button
                                   type="button"
@@ -239,21 +239,46 @@ const EmpData = () => {
                                   aria-label="Close"
                                 ></button>
                               </div>
-                              <div className="modal-body">...</div>
-                              <div className="modal-footer">
-                                <button
-                                  type="button"
-                                  className="btn btn-secondary"
-                                  data-bs-dismiss="modal"
-                                >
-                                  Close
-                                </button>
-                                <button
-                                  type="button"
-                                  className="btn btn-primary"
-                                >
-                                  Save changes
-                                </button>
+                              <div
+                                className="modal-body"
+                                style={{ color: "black" }}
+                              >
+                                <span>
+                                  Name : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                                  {emp.empName}
+                                </span>
+                                <br />
+                                <span>
+                                  Id : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                  {emp.empId}
+                                </span>
+                                <br />
+                                <span>
+                                  Gender : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                  {emp.gender}
+                                </span>
+                                <br />
+                                <span>
+                                  Designation :
+                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                                  {emp.designation}
+                                </span>
+                                <br />
+                                <span>
+                                  Salary : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                                  {emp.empSalary}
+                                </span>
+                                <br />
+                                <span>
+                                  DOB : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                                  {emp.dob}
+                                </span>
+                                <br />
+                                <span>
+                                  JOI : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                                  {emp.joiningDate}
+                                </span>
+                                <br />
                               </div>
                             </div>
                           </div>

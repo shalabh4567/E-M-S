@@ -54,6 +54,28 @@
       "dob": "2000-05-04",
       "joiningDate": "2020-06-08",
       "id": 7
+    },
+    {
+      "empId": 10008,
+      "empName": "Ajay",
+      "gender": "Male",
+      "email": "ajay@gmail.com",
+      "empSalary": "2525214",
+      "designation": "Ass. Analyst II",
+      "dob": "2000-05-04",
+      "joiningDate": "2022-03-05",
+      "id": 8
+    },
+    {
+      "empId": 10009,
+      "empName": "Ritesh",
+      "gender": "Male",
+      "email": "ritesh@gmail.com",
+      "empSalary": "125855",
+      "designation": "Ass. Analyst I",
+      "dob": "1999-05-04",
+      "joiningDate": "2020-05-04",
+      "id": 9
     }
   ]
 }

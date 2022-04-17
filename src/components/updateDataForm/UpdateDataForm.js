@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const AddEmp = (props) => {
   const closeForm = () => {
@@ -60,6 +59,7 @@ const AddEmp = (props) => {
       alert("joining Date should not be greater than the curr Date");
       return false;
     }
+
     fetch("http://localhost:3001/employees/" + props.updateId, {
       method: "PUT",
       headers: {
