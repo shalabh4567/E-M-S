@@ -17,6 +17,12 @@
       "email": "ipsita@gmail.com",
       "password": "1234",
       "id": 3
+    },
+    {
+      "name": "Shardul",
+      "email": "shardul@gmail.com",
+      "password": "1234",
+      "id": 4
     }
   ]
 }

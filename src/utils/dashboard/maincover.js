@@ -82,7 +82,19 @@ function Main(props) {
               </tr>
             </thead>
             <tbody>
-              {props.employee &&
+              {props.empFound ? (
+                <tr>
+                  <th scope="row">{props.empFound.empId}</th>
+                  <td>{props.empFound.empName}</td>
+                  <td>{props.empFound.gender}</td>
+                  <td>{props.empFound.designation}</td>
+                  <td>{props.empFound.empSalary}</td>
+                  <td>{props.empFound.email}</td>
+                  <td>{props.empFound.dob}</td>
+                  <td>{props.empFound.joiningDate}</td>
+                </tr>
+              ) : (
+                props.employee &&
                 props.employee.map((emp, index) => {
                   if (index > 4) {
                     return;
@@ -99,7 +111,8 @@ function Main(props) {
                       <td>{emp.joiningDate}</td>
                     </tr>
                   );
-                })}
+                })
+              )}
             </tbody>
           </table>
           <div className={styles.button}>

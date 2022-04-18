@@ -7,6 +7,7 @@ import AddEmp from "../addEmpFrom/AddEmp";
 const DashboardComponent = (props) => {
   const [showAddform, setShowAddForm] = useState(false);
   const [employee, setEmployee] = useState(null);
+  const [empFound, setEmpFound] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:3001/employees")
@@ -24,8 +25,8 @@ const DashboardComponent = (props) => {
   return (
     <>
       <Sidebar showForm={showForm} />
-      <Nav />
-      <Main employee={employee} />
+      <Nav employee={employee} setEmpFound={setEmpFound} />
+      <Main employee={employee} empFound={empFound} />
       {showAddform ? (
         <AddEmp
           setFormFalse={setShowAddForm}

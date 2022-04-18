@@ -87,6 +87,17 @@
       "dob": "2000-05-04",
       "joiningDate": "2020-08-06",
       "id": 14
+    },
+    {
+      "empId": 10015,
+      "empName": "Shardul",
+      "gender": "Male",
+      "email": "shardul@gmail.com",
+      "empSalary": "125258",
+      "designation": "Ass. Analyst II",
+      "dob": "2000-05-04",
+      "joiningDate": "2020-06-05",
+      "id": 15
     }
   ]
 }
