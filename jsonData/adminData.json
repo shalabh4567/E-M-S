@@ -7,8 +7,13 @@
       "id": 1
     },
     {
+<<<<<<< Updated upstream
       "name": "Ipsita",
       "email": "ipsita@gmail.com",
+=======
+      "name": "Sayantan",
+      "email": "sayantan@gmail.com",
+>>>>>>> Stashed changes
       "password": "1234",
       "id": 2
     }
