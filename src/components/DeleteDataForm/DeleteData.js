@@ -30,6 +30,7 @@ const DeleteData = (props) => {
 
         props.setEmployee(array);
         setShowToast(true);
+        props.setEmpFound("")
         sleep(1500).then(() => {
           props.setDeleteForm(false);
         });
