@@ -5,6 +5,12 @@
       "email": "shalabh@gmail.com",
       "password": "1234",
       "id": 1
+    },
+    {
+      "name": "Ipsita",
+      "email": "iroy@gmail.com",
+      "password": "iroy",
+      "id": 2
     }
   ]
 }
