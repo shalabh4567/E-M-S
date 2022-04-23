@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import ToastMessage from "../toastMessage/ToastMessage";
+import { sleep } from "../../utils/sleepPropmise";
 
 const AddEmp = (props) => {
   const closeForm = () => {
@@ -27,6 +29,8 @@ const AddEmp = (props) => {
   const [empGender, setEmpGender] = useState("Male");
   const [empDOB, setEmpDOB] = useState("");
   const [empJOI, setEmpJOI] = useState("");
+
+  const [showToast, setShowToast] = useState(false);
 
   const [updateEmpData, setUpdateEmpData] = useState("");
 
@@ -82,8 +86,11 @@ const AddEmp = (props) => {
       .then((data) => {
         console.log(data);
         // props.setUpdateForm(false);
-        props.upDateData(data);
-        props.setUpdateForm(false);
+        setShowToast(true);
+        sleep(1500).then(() => {
+          props.upDateData(data);
+          props.setUpdateForm(false);
+        });
       })
       .catch((err) => console.log(err));
   };
@@ -193,6 +200,11 @@ const AddEmp = (props) => {
         )}
       </div>
       <div className="overlay" onClick={closeForm}></div>
+      <ToastMessage
+        showToast={showToast}
+        setShowToast={setShowToast}
+        message="details Updated Successfully"
+      />
     </>
   );
 };

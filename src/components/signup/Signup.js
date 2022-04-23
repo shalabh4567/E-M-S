@@ -1,7 +1,8 @@
 import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Toast from "react-bootstrap/Toast";
+import { sleep } from "../../utils/sleepPropmise";
 import LeftSide from "../../utils/loginSignupLeftSide/LeftSide";
+import ToastMessage from "../toastMessage/ToastMessage";
 import "./Signup.css";
 
 const Signup = () => {
@@ -10,7 +11,8 @@ const Signup = () => {
   const [fname, setFname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [show, setShow] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  const [err, setErr] = useState(null);
 
   const fnameError = useRef(null);
   const emailError = useRef(null);
@@ -18,15 +20,11 @@ const Signup = () => {
 
   const signUp = (e) => {
     e.preventDefault();
-    console.log(fname, email, password);
+    // console.log(fname, email, password);
     if (fname && email && password === "") {
       alert("all fields are required");
       return;
     }
-
-    const sleep = (ms) => {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    };
 
     fetch("http://localhost:4000/admins")
       .then((res) => res.json())
@@ -52,34 +50,23 @@ const Signup = () => {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            setShow(true);
+            setShowToast(true);
             sleep(1500).then(() => history("/login"));
           });
+      })
+      .catch((err) => {
+        setErr("Server Error");
+        setShowToast(true);
       });
   };
 
   return (
     <div className="signup-container">
-      <Toast
-        position="top-end"
-        style={{
-          position: "absolute",
-          right: "10px",
-          top: "10px",
-          background: "yellow",
-        }}
-        show={show}
-        onClose={() => setShow(false)}
-        delay={1000}
-        autohide
-      >
-        <Toast.Header closeButton={false}>
-          <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-          <strong className="me-auto" style={{ color: "black" }}>
-            Signed In Succesfully
-          </strong>
-        </Toast.Header>
-      </Toast>
+      <ToastMessage
+        showToast={showToast}
+        setShowToast={setShowToast}
+        message={err ? err : "Signed In Succesfully"}
+      />
       <LeftSide />
       <div className="right-view">
         <div className="right-view-inner">

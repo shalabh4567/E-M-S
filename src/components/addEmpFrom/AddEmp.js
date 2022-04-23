@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import ToastMessage from "../toastMessage/ToastMessage";
+import { sleep } from "../../utils/sleepPropmise";
 import "./AddEmp.css";
 
 const AddEmp = (props) => {
   // props.setFormFalse(false)
 
   const history = useNavigate();
+  const [showToast, setShowToast] = useState(false);
 
   const totalDesignation = [
     "SDE I",
@@ -36,16 +39,6 @@ const AddEmp = (props) => {
 
   const addEmpData = (e) => {
     e.preventDefault();
-    // console.log(
-    //   empName,
-    //   // empId,
-    //   empEmail,
-    //   empSalary,
-    //   empDesignation,
-    //   empGender,
-    //   empDOB,
-    //   empJOI
-    // );
 
     var val1 = new Date(empDOB);
     var val2 = new Date(empJOI);
@@ -56,7 +49,6 @@ const AddEmp = (props) => {
     }
 
     var currDate = Date.now();
-    console.log(currDate);
 
     if (val2 > currDate) {
       alert("joining Date should not be greater than the curr Date");
@@ -91,14 +83,22 @@ const AddEmp = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        props.setFormFalse(false);
-        props.setEmployee([...props.employee, data]);
+        setShowToast(true);
+        sleep(1500).then(() => {
+          props.setFormFalse(false);
+          props.setEmployee([...props.employee, data]);
+        });
       })
       .catch((err) => console.log(err));
   };
 
   return (
     <>
+      <ToastMessage
+        showToast={showToast}
+        setShowToast={setShowToast}
+        message={"Details added successfully"}
+      />
       <div className="add-employee">
         <div className="emp-form-heading">
           <h3>
@@ -118,15 +118,6 @@ const AddEmp = (props) => {
               onChange={(e) => setEmpName(e.target.value)}
             />
           </div>
-          {/* <div className="empId">
-            <input
-              type="text"
-              placeholder="Employee Id"
-              value={empId}
-              required
-              onChange={(e) => setEmpId(e.target.value)}
-            />
-          </div> */}
           <div className="empEmail">
             <input
               type="text"
